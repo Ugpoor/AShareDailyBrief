@@ -1,0 +1,64 @@
+Traceback (most recent call last):
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+plotActiveMarketDepth(stocksymb)
+------------------
+
+----- stderr -----
+/Users/mac/anaconda3/lib/python3.11/site-packages/akshare/stock/stock_zh_a_tick_tx.py:26: UserWarning: 正在下载数据，请稍等
+  warnings.warn("正在下载数据，请稍等")
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+Cell [0;32mIn[33], line 1[0m
+[0;32m----> 1[0m plotActiveMarketDepth(stocksymb)
+
+Cell [0;32mIn[32], line 7[0m, in [0;36mplotActiveMarketDepth[0;34m(stocksymbol)[0m
+[1;32m      2[0m [38;5;28;01mdef[39;00m [38;5;21mplotActiveMarketDepth[39m(stocksymbol):
+[1;32m      3[0m     
+[1;32m      4[0m     [38;5;66;03m#一次性获得历史分笔数据（当天即当天之前的交易时间；隔天即昨天）[39;00m
+[1;32m      5[0m     yesterdayTicks[38;5;241m=[39mak[38;5;241m.[39mstock_zh_a_tick_tx_js(symbol[38;5;241m=[39mtransferExSym(stocksymb))
+[0;32m----> 7[0m     md[38;5;241m=[39mpriceMarketDepth(yesterdayTicks)
+[1;32m      8[0m     md [38;5;241m=[39m md[(md[[38;5;124m'[39m[38;5;124m买盘深度[39m[38;5;124m'[39m] [38;5;241m!=[39m [38;5;241m0[39m) [38;5;241m|[39m (md[[38;5;124m'[39m[38;5;124m卖盘深度[39m[38;5;124m'[39m] [38;5;241m!=[39m [38;5;241m0[39m)]
+[1;32m      9[0m     mdp[38;5;241m=[39mDataFramePretty(md)
+
+Cell [0;32mIn[30], line 7[0m, in [0;36mpriceMarketDepth[0;34m(df, measure)[0m
+[1;32m      5[0m [38;5;28;01mdef[39;00m [38;5;21mpriceMarketDepth[39m(df,measure[38;5;241m=[39m[38;5;241m0.01[39m):
+[0;32m----> 7[0m     open_price [38;5;241m=[39m df[38;5;241m.[39mloc[df[[38;5;124m'[39m[38;5;124m成交时间[39m[38;5;124m'[39m] [38;5;241m==[39m [38;5;124m'[39m[38;5;124m09:30:00[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124m成交价格[39m[38;5;124m'[39m][38;5;241m.[39miloc[[38;5;241m0[39m]
+[1;32m      9[0m     [38;5;66;03m# 设置涨跌停板系数[39;00m
+[1;32m     10[0m     [38;5;28;01mif[39;00m stocksymb [38;5;241m==[39m [38;5;124m'[39m[38;5;124mbj[39m[38;5;124m'[39m:
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/core/frame.py:4090[0m, in [0;36mDataFrame.__getitem__[0;34m(self, key)[0m
+[1;32m   4088[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mcolumns[38;5;241m.[39mnlevels [38;5;241m>[39m [38;5;241m1[39m:
+[1;32m   4089[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_getitem_multilevel(key)
+[0;32m-> 4090[0m indexer [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mcolumns[38;5;241m.[39mget_loc(key)
+[1;32m   4091[0m [38;5;28;01mif[39;00m is_integer(indexer):
+[1;32m   4092[0m     indexer [38;5;241m=[39m [indexer]
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/core/indexes/range.py:417[0m, in [0;36mRangeIndex.get_loc[0;34m(self, key)[0m
+[1;32m    415[0m         [38;5;28;01mraise[39;00m [38;5;167;01mKeyError[39;00m(key) [38;5;28;01mfrom[39;00m [38;5;21;01merr[39;00m
+[1;32m    416[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(key, Hashable):
+[0;32m--> 417[0m     [38;5;28;01mraise[39;00m [38;5;167;01mKeyError[39;00m(key)
+[1;32m    418[0m [38;5;28mself[39m[38;5;241m.[39m_check_indexing_error(key)
+[1;32m    419[0m [38;5;28;01mraise[39;00m [38;5;167;01mKeyError[39;00m(key)
+
+[0;31mKeyError[0m: '成交时间'
+
