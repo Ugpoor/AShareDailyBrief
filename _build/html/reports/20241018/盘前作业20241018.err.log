@@ -1,4 +1,17 @@
 Traceback (most recent call last):
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 778, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 189, in ensure_async
+    result = await obj
+             ^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_client/channels.py", line 230, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
   File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
@@ -12,84 +25,20 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^
   File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-import numpy as np
-import matplotlib.pyplot as plt
-
-#订单簿分析
-def orderBook(stocksymb,start_time,end_time):
-    
-    openAuctionDf= ak.stock_bid_ask_em(symbol=stocksymb)
-    df1_subset = openAuctionDf.head(20)
-
-    # 处理奇数行的 value 列，保留小数点后二位，并以 .2f 形式显示
-    prices = df1_subset.iloc[::2]['value'].apply(lambda x: f'{x:.2f}').tolist()
-
-    # 处理偶数行的 value 列，取平均值的科学计数法的 10 的 x 次方
-    volumes = df1_subset.iloc[1::2]['value'].apply(lambda x: f'{x:.1e}').tolist()
-
-    # 创建新的 df2
-    df2 = pd.DataFrame({'price': prices, 'volume': volumes})
-    
-    # 将 volume 列转换为浮点型以便计算和绘图
-    df2['volume'] = df2['volume'].astype(float)
-    df2['price'] = df2['price'].astype(float)
-
-    # 获取 df1 第 21 行的 value 列值
-    latest_price = openAuctionDf.loc[20, 'value']
-    sell1price=df2.loc[4,'price']
-    selllag=sell1price-latest_price
-    buy1price=df2.loc[5,'price']
-    buylag=latest_price-buy1price
-    if selllag==0:
-        msg='成交在“卖一”价，'
-    elif buylag==0:
-        msg='成交在“买一”价，'
-    elif selllag>buylag:
-        msg='成交接近“买一”价，'
-    elif buylag>selllag:
-        msg='成交接近“卖一”价，'
-    else:
-        msg='成交在“买一”、“卖一”的中间价，'
-    print(f"{msg}最新成交价: {latest_price}")
-    #???df2.to_csv(f'{}')
-    print(df2)
-
-    # 绘制水平条形图
-    fig, ax = plt.subplots(figsize=(10, 6))
-
-    # 生成条形图
-    bars = ax.barh(y=df2['price'],width=df2['volume'],height=0.005, color='blue', align='center')
-    bars[4].set_color('red')  # 第 5 行标注为红色
-    bars[5].set_color('red')  # 第 6 行标注为红色
-    
-    for bar in bars:
-        width = bar.get_width()
-        ax.text(width, bar.get_y() + bar.get_height() / 2, f'{width:.1e}', va='center', ha='left', fontsize=10, color='black')
-
-    # 添加标签
-    ax.set_xlabel('Volume')
-    ax.set_ylabel('Price')
-    ax.set_title('Order Book')
-    
-    # 显示图表
-    plt.show()
-
-orderBook(stocksymb)
-------------------
-
-
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mTypeError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[30], line 63[0m
-[1;32m     60[0m     [38;5;66;03m# 显示图表[39;00m
-[1;32m     61[0m     plt[38;5;241m.[39mshow()
-[0;32m---> 63[0m orderBook(stocksymb)
-
-[0;31mTypeError[0m: orderBook() missing 2 required positional arguments: 'start_time' and 'end_time'
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1001, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 802, in _async_poll_for_reply
+    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 852, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+stocksymb='300339'
+periods=['daily','weekly','monthly']
+stockDict=plotDcStocks(stocksymb,periods)
+-------------------
 
