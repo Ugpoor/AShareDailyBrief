@@ -37,12 +37,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-import akshare as ak
-from datetime import datetime, time
-import pandas as pd
-
-news_dfgn = ak.stock_info_cjzc_em()
-news_dfgn['发布时间']=pd.to_datetime(news_dfgn['发布时间'])
-news_dfgn[news_dfgn['发布时间']>lastday]
+news_sinagj = ak.stock_info_global_sina()
+news_sinagj['时间']=pd.to_datetime(news_sinagj['时间'])
+news_sinagj[news_sinagj['时间']>lastday]
 -------------------
 
