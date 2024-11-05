@@ -18,15 +18,8 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-#返回当日涨停股票DataFrame
-def limitupList(date):
-    collist=['所属行业','代码','名称','涨跌幅','首次封板时间','最后封板时间','炸板次数','涨停统计','连板数']
-    stock_zt_pool_em_df = ak.stock_zt_pool_em(date=date)
-    last_hs_10=stock_zt_pool_em_df[collist]
-    return last_hs_10
-
-last_hs_10=limitupList(lastday)
-last_hs_10
+syclestart='20240925'
+ak.stock_zt_pool_strong_em(date=syclestart)
 ------------------
 
 
@@ -61,30 +54,21 @@ File [0;32m~/anaconda3/lib/python3.11/site-packages/simplejson/decoder.py:416[
 During handling of the above exception, another exception occurred:
 
 [0;31mJSONDecodeError[0m                           Traceback (most recent call last)
-Cell [0;32mIn[12], line 8[0m
-[1;32m      5[0m     last_hs_10[38;5;241m=[39mstock_zt_pool_em_df[collist]
-[1;32m      6[0m     [38;5;28;01mreturn[39;00m last_hs_10
-[0;32m----> 8[0m last_hs_10[38;5;241m=[39mlimitupList(lastday)
-[1;32m      9[0m last_hs_10
+Cell [0;32mIn[28], line 2[0m
+[1;32m      1[0m syclestart[38;5;241m=[39m[38;5;124m'[39m[38;5;124m20240925[39m[38;5;124m'[39m
+[0;32m----> 2[0m ak[38;5;241m.[39mstock_zt_pool_strong_em(date[38;5;241m=[39msyclestart)
 
-Cell [0;32mIn[12], line 4[0m, in [0;36mlimitupList[0;34m(date)[0m
-[1;32m      2[0m [38;5;28;01mdef[39;00m [38;5;21mlimitupList[39m(date):
-[1;32m      3[0m     collist[38;5;241m=[39m[[38;5;124m'[39m[38;5;124m所属行业[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m代码[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m名称[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m涨跌幅[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m首次封板时间[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m最后封板时间[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m炸板次数[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m涨停统计[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m连板数[39m[38;5;124m'[39m]
-[0;32m----> 4[0m     stock_zt_pool_em_df [38;5;241m=[39m ak[38;5;241m.[39mstock_zt_pool_em(date[38;5;241m=[39mdate)
-[1;32m      5[0m     last_hs_10[38;5;241m=[39mstock_zt_pool_em_df[collist]
-[1;32m      6[0m     [38;5;28;01mreturn[39;00m last_hs_10
-
-File [0;32m~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_ztb_em.py:44[0m, in [0;36mstock_zt_pool_em[0;34m(date)[0m
-[1;32m     34[0m params [38;5;241m=[39m {
-[1;32m     35[0m     [38;5;124m"[39m[38;5;124mut[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m7eea3edcaed734bea9cbfc24409ed989[39m[38;5;124m"[39m,
-[1;32m     36[0m     [38;5;124m"[39m[38;5;124mdpt[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124mwz.ztzt[39m[38;5;124m"[39m,
+File [0;32m~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_ztb_em.py:205[0m, in [0;36mstock_zt_pool_strong_em[0;34m(date)[0m
+[1;32m    195[0m params [38;5;241m=[39m {
+[1;32m    196[0m     [38;5;124m"[39m[38;5;124mut[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m7eea3edcaed734bea9cbfc24409ed989[39m[38;5;124m"[39m,
+[1;32m    197[0m     [38;5;124m"[39m[38;5;124mdpt[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124mwz.ztzt[39m[38;5;124m"[39m,
 [0;32m   (...)[0m
-[1;32m     41[0m     [38;5;124m"[39m[38;5;124m_[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m1621590489736[39m[38;5;124m"[39m,
-[1;32m     42[0m }
-[1;32m     43[0m r [38;5;241m=[39m requests[38;5;241m.[39mget(url, params[38;5;241m=[39mparams)
-[0;32m---> 44[0m data_json [38;5;241m=[39m r[38;5;241m.[39mjson()
-[1;32m     45[0m [38;5;28;01mif[39;00m data_json[[38;5;124m"[39m[38;5;124mdata[39m[38;5;124m"[39m] [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
-[1;32m     46[0m     [38;5;28;01mreturn[39;00m pd[38;5;241m.[39mDataFrame()
+[1;32m    202[0m     [38;5;124m"[39m[38;5;124m_[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m1621590489736[39m[38;5;124m"[39m,
+[1;32m    203[0m }
+[1;32m    204[0m r [38;5;241m=[39m requests[38;5;241m.[39mget(url, params[38;5;241m=[39mparams)
+[0;32m--> 205[0m data_json [38;5;241m=[39m r[38;5;241m.[39mjson()
+[1;32m    206[0m [38;5;28;01mif[39;00m data_json[[38;5;124m"[39m[38;5;124mdata[39m[38;5;124m"[39m] [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    207[0m     [38;5;28;01mreturn[39;00m pd[38;5;241m.[39mDataFrame()
 
 File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/models.py:975[0m, in [0;36mResponse.json[0;34m(self, **kwargs)[0m
 [1;32m    971[0m     [38;5;28;01mreturn[39;00m complexjson[38;5;241m.[39mloads([38;5;28mself[39m[38;5;241m.[39mtext, [38;5;241m*[39m[38;5;241m*[39mkwargs)
