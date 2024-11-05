@@ -515,106 +515,62 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">SSLError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">SSLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred</span> in <span class="ni">violation of protocol </span><span class="nt">(_ssl.c:1006)</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="ne">MaxRetryError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/adapters.py:486,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">485</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">486</span>     <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">487</span>         <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">488</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">489</span>         <span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span>         <span class="n">headers</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">491</span>         <span class="n">redirect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">492</span>         <span class="n">assert_same_host</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">493</span>         <span class="n">preload_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">495</span>         <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">498</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span> <span class="k">except</span> <span class="p">(</span><span class="n">ProtocolError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py:844,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">842</span>     <span class="n">new_e</span> <span class="o">=</span> <span class="n">ProtocolError</span><span class="p">(</span><span class="s2">&quot;Connection aborted.&quot;</span><span class="p">,</span> <span class="n">new_e</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">844</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">retries</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">845</span>     <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="n">new_e</span><span class="p">,</span> <span class="n">_pool</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">_stacktrace</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">846</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">847</span> <span class="n">retries</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py:515,</span> in <span class="ni">Retry.increment</span><span class="nt">(self, method, url, response, error, _pool, _stacktrace)</span>
-<span class="g g-Whitespace">    </span><span class="mi">514</span>     <span class="n">reason</span> <span class="o">=</span> <span class="n">error</span> <span class="ow">or</span> <span class="n">ResponseError</span><span class="p">(</span><span class="n">cause</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">515</span>     <span class="k">raise</span> <span class="n">MaxRetryError</span><span class="p">(</span><span class="n">_pool</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">reason</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">reason</span>  <span class="c1"># type: ignore[arg-type]</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span> <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Incremented Retry for (url=&#39;</span><span class="si">%s</span><span class="s2">&#39;): </span><span class="si">%r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">new_retry</span><span class="p">)</span>
-
-<span class="nn">MaxRetryError: HTTPSConnectionPool(host=&#39;np-listapi.eastmoney.com&#39;, port=443): Max retries exceeded with url: /comm/web/getNewsByColumns?client=web&amp;biz=web_news_col&amp;column=1207&amp;order=1&amp;needInteractData=0&amp;page_index=1&amp;page_size=200&amp;req_trace=1710314682980&amp;fields=code%2CshowTime%2Ctitle%2CmediaName%2Csummary%2Cimage%2Curl%2CuniqueUrl%2CNp_dst (Caused by SSLError(SSLEOFError(8, &#39;[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred</span> in <span class="ni">violation of protocol </span><span class="nt">(_ssl.c:1006)&#39;)))</span>
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">SSLError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">time</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">news_dfgn</span> <span class="o">=</span> <span class="n">ak</span><span class="o">.</span><span class="n">stock_info_cjzc_em</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">news_dfgn</span><span class="p">[</span><span class="s1">&#39;发布时间&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">news_dfgn</span><span class="p">[</span><span class="s1">&#39;发布时间&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">news_dfgn</span><span class="p">[</span><span class="n">news_dfgn</span><span class="p">[</span><span class="s1">&#39;发布时间&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="n">lastday</span><span class="p">]</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_info.py:38,</span> in <span class="ni">stock_info_cjzc_em</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;page_index&quot;</span><span class="p">:</span> <span class="n">page</span><span class="p">})</span>
-<span class="ne">---&gt; </span><span class="mi">38</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="n">data_json</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="n">temp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_json</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;list&quot;</span><span class="p">])</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/api.py:73,</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="w">     </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sends a GET request.</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="sd">     :param url: URL for the new :class:`Request` object.</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="sd">     :rtype: requests.Response</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">73</span>     <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/api.py:59,</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="c1"># By using the &#39;with&#39; statement we are sure the session is closed, thus we</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="c1"># avoid leaving sockets open which can trigger a ResourceWarning in some</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="c1"># cases, and look like a memory leak in others.</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">with</span> <span class="n">sessions</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">59</span>     <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:589,</span> in <span class="ni">Session.request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
-<span class="g g-Whitespace">    </span><span class="mi">584</span> <span class="n">send_kwargs</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span>     <span class="s2">&quot;timeout&quot;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">586</span>     <span class="s2">&quot;allow_redirects&quot;</span><span class="p">:</span> <span class="n">allow_redirects</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">587</span> <span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">588</span> <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">589</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">return</span> <span class="n">resp</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:703,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span> <span class="n">start</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="c1"># Send the request</span>
-<span class="ne">--&gt; </span><span class="mi">703</span> <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="c1"># Total elapsed time of the request (approximately)</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/adapters.py:517,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">513</span>         <span class="k">raise</span> <span class="n">ProxyError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span> <span class="n">_SSLError</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span>         <span class="c1"># This branch is for urllib3 v1.22 and later.</span>
-<span class="ne">--&gt; </span><span class="mi">517</span>         <span class="k">raise</span> <span class="n">SSLError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">519</span>     <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">521</span> <span class="k">except</span> <span class="n">ClosedPoolError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="nn">SSLError: HTTPSConnectionPool(host=&#39;np-listapi.eastmoney.com&#39;, port=443): Max retries exceeded with url: /comm/web/getNewsByColumns?client=web&amp;biz=web_news_col&amp;column=1207&amp;order=1&amp;needInteractData=0&amp;page_index=1&amp;page_size=200&amp;req_trace=1710314682980&amp;fields=code%2CshowTime%2Ctitle%2CmediaName%2Csummary%2Cimage%2Curl%2CuniqueUrl%2CNp_dst (Caused by SSLError(SSLEOFError(8, &#39;[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred</span> in <span class="ni">violation of protocol </span><span class="nt">(_ssl.c:1006)&#39;)))</span>
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>标题</th>
+      <th>摘要</th>
+      <th>发布时间</th>
+      <th>链接</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>东方财富财经早餐 11月5日周二</td>
+      <td>【财经早餐】1、全国人大常委会审议增加地方政府债务限额置换存量隐性债务的议案。2、国资委：确...</td>
+      <td>2024-11-05 06:00:20</td>
+      <td>http://finance.eastmoney.com/a/202411053228604...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>东方财富财经早餐 11月4日周一</td>
+      <td>【财经早餐】1、六部门：允许外国自然人战略投资，持股锁定最少12个月。2、上交所：始终对各类...</td>
+      <td>2024-11-04 06:00:11</td>
+      <td>http://finance.eastmoney.com/a/202411043227366...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>东方财富财经早餐 11月1日周五</td>
+      <td>【财经早餐】1、《求是》杂志发表习近平总书记重要文章《促进高质量充分就业》。2、央行：10月...</td>
+      <td>2024-11-01 06:00:16</td>
+      <td>http://finance.eastmoney.com/a/202410313225146...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>东方财富财经早餐 10月31日周四</td>
+      <td>【财经早餐】1、国家发展改革委等六部门：大力实施可再生能源替代行动。2、深交所召开创业板高质...</td>
+      <td>2024-10-31 06:00:04</td>
+      <td>http://finance.eastmoney.com/a/202410313223659...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="id4">
@@ -655,38 +611,38 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>人民币兑美元中间价报7.1135 上调115点</td>
-      <td>人民币兑美元中间价报7.1135，上调115点。</td>
-      <td>2024-11-01 09:15:03</td>
-      <td>https://finance.eastmoney.com/a/20241101322562...</td>
+      <td>美国大选进入倒计时 替代币成为加密货币世界风险最大的交易</td>
+      <td>【美国大选进入倒计时 替代币成为加密货币世界风险最大的交易】继今年大部分时间内表现弱于比特币...</td>
+      <td>2024-11-06 00:07:27</td>
+      <td>https://finance.eastmoney.com/a/20241106323004...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>大罢工即将结束？波音和工会就新劳工合同达成一致</td>
-      <td>【大罢工即将结束？波音和工会就新劳工合同达成一致】据媒体报道，波音公司及其机械师工会已就一项...</td>
-      <td>2024-11-01 09:08:48</td>
-      <td>https://finance.eastmoney.com/a/20241101322559...</td>
+      <td>内幕交易！80岁“毛纺巨子”陆克平被判三缓四 没收2.32亿元！</td>
+      <td>【内幕交易！80岁“毛纺巨子”陆克平被判三缓四 没收2.32亿元！】四环生物11月5日晚间公...</td>
+      <td>2024-11-06 00:01:55</td>
+      <td>https://finance.eastmoney.com/a/20241105323003...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>再创新高 中证A500指数基金合计规模近1200亿</td>
-      <td>【再创新高 中证A500指数基金合计规模近1200亿】中证A500指数相关基金规模再创新高，...</td>
-      <td>2024-11-01 09:08:07</td>
-      <td>https://finance.eastmoney.com/a/20241101322557...</td>
+      <td>英国20年期国债收益率当天上升4个基点</td>
+      <td>英国20年期国债收益率当天上升4个基点，达到4.931%，为2023年11月1日以来的最高水平。</td>
+      <td>2024-11-05 23:56:11</td>
+      <td>https://finance.eastmoney.com/a/20241105323004...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>美联储或许没得到最想要的 但PCE数据尚不至于改变本月降息结局</td>
-      <td>【美联储或许没得到最想要的 但PCE数据尚不至于改变本月降息结局】策略师Quincy Kro...</td>
-      <td>2024-11-01 09:08:06</td>
-      <td>https://finance.eastmoney.com/a/20241101322558...</td>
+      <td>欧盟委员会主席将缺席2024年联合国气候变化大会</td>
+      <td>【欧盟委员会主席将缺席2024年联合国气候变化大会】欧盟委员会发言人称，欧盟委员会主席冯德莱...</td>
+      <td>2024-11-05 23:54:48</td>
+      <td>https://finance.eastmoney.com/a/20241105323004...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>海通的银行首席到国海了 他早遭调侃：国君海通合并 派点要帮你打到国海吗</td>
-      <td>【海通的银行首席到国海了 他早遭调侃：国君海通合并 派点要帮你打到国海吗】从10月30日林加...</td>
-      <td>2024-11-01 09:08:05</td>
-      <td>https://finance.eastmoney.com/a/20241101322557...</td>
+      <td>墨西哥比索兑美元继续下跌</td>
+      <td>墨西哥比索兑美元继续下跌，贬值1%，达到自2022年9月以来的最低水平。</td>
+      <td>2024-11-05 23:54:17</td>
+      <td>https://finance.eastmoney.com/a/20241105323004...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -697,38 +653,38 @@ document.write(`
     </tr>
     <tr>
       <th>195</th>
-      <td>USDA干旱报告：约73%的美国大豆种植区域受到干旱影响</td>
-      <td>【USDA干旱报告：美国大豆干旱区域扩大】美国农业部（USDA）最新干旱报告显示，截至10月...</td>
-      <td>2024-10-31 21:41:15</td>
-      <td>https://finance.eastmoney.com/a/20241031322508...</td>
+      <td>在岸人民币兑美元收盘报7.1095 较上一交易日下跌121点</td>
+      <td>在岸人民币兑美元收盘报7.1095，较上一交易日下跌121点。</td>
+      <td>2024-11-05 16:32:28</td>
+      <td>https://finance.eastmoney.com/a/20241105322973...</td>
     </tr>
     <tr>
       <th>196</th>
-      <td>前三季度内地买家在香港购房成交数量创纪录 人均花费1100万港元</td>
-      <td>【前三季度内地买家在香港购房成交数量创纪录 人均花费1100万港元】香港中原地产10月30日...</td>
-      <td>2024-10-31 21:40:36</td>
-      <td>https://finance.eastmoney.com/a/20241031322507...</td>
+      <td>国家电投与西门子能源签署合作备忘录</td>
+      <td>【国家电投与西门子能源签署合作备忘录】据西门子能源官微消息，11月5日，国家电投与西门子能源...</td>
+      <td>2024-11-05 16:31:31</td>
+      <td>https://finance.eastmoney.com/a/20241105322973...</td>
     </tr>
     <tr>
       <th>197</th>
-      <td>新迅达：股东将被动减持不超3%公司股份</td>
-      <td>【新迅达：股东将被动减持不超3%公司股份】新迅达公告，持有公司6.1073%股份的股东陈湧锐...</td>
-      <td>2024-10-31 21:40:09</td>
-      <td>https://finance.eastmoney.com/a/20241031322507...</td>
+      <td>中国能建：子公司中标66.63亿元EPC总承包项目</td>
+      <td>【中国能建：子公司中标66.63亿元EPC总承包项目】中国能建公告，其子公司中国电力工程顾问...</td>
+      <td>2024-11-05 16:30:30</td>
+      <td>https://finance.eastmoney.com/a/20241105322972...</td>
     </tr>
     <tr>
       <th>198</th>
-      <td>观典防务：证券简称变更为ST观典 股票明日起停牌</td>
-      <td>【观典防务：证券简称变更为ST观典 明起停牌】观典防务(688287)10月31日晚间公告，...</td>
-      <td>2024-10-31 21:38:52</td>
-      <td>https://finance.eastmoney.com/a/20241031322507...</td>
+      <td>浦东新区：不成套职工住宅更新改造采取拆除重建或成套改造方式实施</td>
+      <td>【浦东新区：不成套职工住宅更新改造采取拆除重建或成套改造方式实施】浦东新区人民政府印发《浦东...</td>
+      <td>2024-11-05 16:29:23</td>
+      <td>https://finance.eastmoney.com/a/20241105322972...</td>
     </tr>
     <tr>
       <th>199</th>
-      <td>“元宇宙第一股”Roblox股价涨近19% 创下2023年11月以来最大涨幅</td>
-      <td>“元宇宙第一股”Roblox股价涨近19%，创下2023年11月以来最大涨幅，公司上调年度预...</td>
-      <td>2024-10-31 21:37:25</td>
-      <td>https://finance.eastmoney.com/a/20241031322507...</td>
+      <td>A股连续25个交易日成交额超万亿 创2015年以来新纪录</td>
+      <td>【A股连续25个交易日成交额超万亿 创2015年7月中旬以来新纪录】今日两市成交额超2.3万...</td>
+      <td>2024-11-05 16:26:39</td>
+      <td>https://finance.eastmoney.com/a/20241105322972...</td>
     </tr>
   </tbody>
 </table>
@@ -772,103 +728,103 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>2024-11-01 09:17:02</td>
-      <td>【一汽丰田被强制执行51.2万】天眼查法律诉讼信息显示，近日，一汽丰田汽车有限公司新增1条被...</td>
+      <td>2024-11-06 00:13:37</td>
+      <td>美、布两油日内涨超1%，现分别报72.17美元/桶和75.93美元/桶。</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2024-11-01 09:15:58</td>
-      <td>人民币兑美元中间价报7.1135元。</td>
+      <td>2024-11-06 00:12:25</td>
+      <td>【伊拉克总理与美国务卿通话商讨中东地区局势】当地时间11月5日获悉，当天伊拉克总理苏达尼与美...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2024-11-01 09:14:53</td>
-      <td>目击者称，以色列袭击贝鲁特南郊，这是几天来的首次袭击。</td>
+      <td>2024-11-06 00:06:32</td>
+      <td>【美国大选进入倒计时 替代币成为加密货币世界风险最大的交易】继今年大部分时间内表现弱于比特币...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2024-11-01 09:14:34</td>
-      <td>【系列政策优化释放积极信号 郑州楼市稳步回升向“暖”】今年以来，郑州在响应国家政策的同时，因...</td>
+      <td>2024-11-06 00:06:18</td>
+      <td>英国CMA表示，已就MRI软件LLC收购capital ONE有限公司一事送达初步执行令。</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2024-11-01 09:10:58</td>
-      <td>【人民日报：供需两侧发力，房地产金融政策落地见效】今年以来，一系列房地产金融政策持续优化，从...</td>
+      <td>2024-11-06 00:04:35</td>
+      <td>【土耳其一炼油厂发生爆炸，伤亡不明】 当地时间5日，土耳其科贾埃利省伊兹米特一炼油厂发生爆炸...</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>2024-11-01 09:10:16</td>
-      <td>上海崇明区台风预警升级。崇明区气象台1日08时57分更新该区域台风蓝色预警信号为台风黄色预警信号。</td>
+      <td>2024-11-06 00:01:43</td>
+      <td>道琼斯互联网综合指数上涨8.10点，涨幅0.80%。</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>2024-11-01 09:09:49</td>
-      <td>【黎巴嫩称以军空袭贝鲁特南郊】当地时间11月1日凌晨，总台记者自黎巴嫩真主党方面获悉，以色列...</td>
+      <td>2024-11-06 00:00:06</td>
+      <td>【中国工商银行工银自贸总部在上海成立】11月5日，中国工商银行在上海举行工银自贸总部揭牌仪式...</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>2024-11-01 09:09:04</td>
-      <td>【再创新高 中证A500指数基金合计规模近1200亿 】中证A500指数相关基金规模再创新高...</td>
+      <td>2024-11-05 23:58:21</td>
+      <td>【美国司法部批准向密苏里州德克萨斯州派遣选举监督员】美国司法部已获准在选举日派律师前往密苏里...</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>2024-11-01 09:08:57</td>
-      <td>【福建省调整防台风应急响应至Ⅲ级 终止防暴雨应急响应】今天6时，第21号台风“康妮”中心距离...</td>
+      <td>2024-11-05 23:58:14</td>
+      <td>标普500指数非必需消费品板块上涨1%。</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>2024-11-01 09:08:09</td>
-      <td>【零跑汽车：10月交付达38177台 同比增长109.7%】据零跑汽车(09863.HK)消...</td>
+      <td>2024-11-05 23:55:34</td>
+      <td>【深圳公布低空经济基建进展 2026年预计建成1200个以上低空起降点】 11月5日，深圳市...</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>2024-11-01 09:07:32</td>
-      <td>【香港渔护署：北大屿海岸公园即日成立】香港特区政府渔农自然护理署（渔护署）今日（11月1日）...</td>
+      <td>2024-11-05 23:53:47</td>
+      <td>【欧盟委员会主席将缺席2024年联合国气候变化大会】欧盟委员会发言人称，欧盟委员会主席冯德莱...</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>2024-11-01 09:06:58</td>
-      <td>【2只中证A500场外指数基金提前结束募集】11月1日，招商基金、景顺长城基金分别公告，将招...</td>
+      <td>2024-11-05 23:53:24</td>
+      <td>墨西哥比索兑美元继续下跌，贬值1%，达到自2022年9月以来的最低水平。</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>2024-11-01 09:06:35</td>
-      <td>【摩根资产管理“A系列”ETF规模突破100亿元】Wind数据显示，截至10月31日，摩根资...</td>
+      <td>2024-11-05 23:53:15</td>
+      <td>【俄罗斯炼油厂维护期间燃料出口接近历史低位】俄罗斯炼油厂维护期间燃料出口接近历史低位，10月...</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>2024-11-01 09:05:34</td>
-      <td>【郭明錤认为iPhone出货量短期内因Apple Intelligence大幅提升的可能性不...</td>
+      <td>2024-11-05 23:46:11</td>
+      <td>恒天然：11月5日全球乳品贸易（GDT）拍卖价格指数上升4.8%，奶粉各合同期FAS拍卖均价...</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>2024-11-01 09:03:33</td>
-      <td>【台风“康妮”减弱 台气象部门解除台湾本岛陆上警报】台风“康妮”11月1日凌晨减弱为轻台，台...</td>
+      <td>2024-11-05 23:45:40</td>
+      <td>【以军称袭击黎真主党在叙利亚的弹药库】当地时间11月5日，以色列国防军发表声明称，当天早些时...</td>
     </tr>
     <tr>
       <th>15</th>
-      <td>2024-11-01 09:02:40</td>
-      <td>【前三季度医保结算69.16亿人次 统筹基金支出1.76万亿元】今天（1日）从国家医保局获悉...</td>
+      <td>2024-11-05 23:45:02</td>
+      <td>英国10年期国债收益率上升至2023年11月1日以来的最高水平4.528%，当日上涨7个基点...</td>
     </tr>
     <tr>
       <th>16</th>
-      <td>2024-11-01 09:01:37</td>
-      <td>【大疆公司一行到访海昌新材考察】 10月31日，大疆公司采购及工程领域的相关领导莅临海昌新材...</td>
+      <td>2024-11-05 23:43:57</td>
+      <td>周二（11月5日），巴基斯坦卡拉奇证交所KSE 100指数收涨0.29%，报92406.95...</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>2024-11-01 09:00:35</td>
-      <td>台湾证交所加权股价指数下跌2.4%至22,267.03点。</td>
+      <td>2024-11-05 23:43:46</td>
+      <td>【停产近十年的江苏熔盛重工有限公司或将实质性重启】停产近十年的江苏熔盛重工有限公司或将实质性...</td>
     </tr>
     <tr>
       <th>18</th>
-      <td>2024-11-01 09:00:29</td>
-      <td>富时中国A50指数期货开盘涨0.05%。</td>
+      <td>2024-11-05 23:40:45</td>
+      <td>希腊雅典证交所综合指数收涨0.65%，报1399.66点。</td>
     </tr>
     <tr>
       <th>19</th>
-      <td>2024-11-01 09:00:25</td>
-      <td>早盘开盘，国内期货主力合约涨跌不一。集运欧线、低硫燃料油涨超2%，SC原油、白糖、棕榈油、工...</td>
+      <td>2024-11-05 23:38:00</td>
+      <td>【涉嫌集资诈骗 鼎益丰隋某义等人被采取刑事强制措施】深圳市公安局福田分局发布通报称：“鼎益丰...</td>
     </tr>
   </tbody>
 </table>
@@ -892,136 +848,108 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">SSLError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">SSLError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred</span> in <span class="ni">violation of protocol </span><span class="nt">(_ssl.c:1006)</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>open</th>
-      <th>high</th>
-      <th>low</th>
-      <th>close</th>
-      <th>volume</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2013-08-20</td>
-      <td>22396.289</td>
-      <td>22481.740</td>
-      <td>21907.211</td>
-      <td>21964.051</td>
-      <td>6.352194e+10</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2013-08-21</td>
-      <td>21964.689</td>
-      <td>21970.250</td>
-      <td>21618.600</td>
-      <td>21817.730</td>
-      <td>7.237452e+09</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2013-08-22</td>
-      <td>21538.189</td>
-      <td>21944.471</td>
-      <td>21538.189</td>
-      <td>21895.400</td>
-      <td>8.229203e+09</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2013-08-23</td>
-      <td>22006.410</td>
-      <td>22103.900</td>
-      <td>21769.039</td>
-      <td>21863.510</td>
-      <td>7.544465e+09</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2013-08-26</td>
-      <td>21943.400</td>
-      <td>22116.000</td>
-      <td>21898.150</td>
-      <td>22005.320</td>
-      <td>7.672642e+09</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2752</th>
-      <td>2024-10-25</td>
-      <td>20521.950</td>
-      <td>20784.470</td>
-      <td>20521.950</td>
-      <td>20590.150</td>
-      <td>1.857547e+10</td>
-    </tr>
-    <tr>
-      <th>2753</th>
-      <td>2024-10-28</td>
-      <td>20592.740</td>
-      <td>20669.410</td>
-      <td>20428.940</td>
-      <td>20599.359</td>
-      <td>1.626292e+10</td>
-    </tr>
-    <tr>
-      <th>2754</th>
-      <td>2024-10-29</td>
-      <td>20729.980</td>
-      <td>20890.080</td>
-      <td>20563.740</td>
-      <td>20701.139</td>
-      <td>1.764600e+10</td>
-    </tr>
-    <tr>
-      <th>2755</th>
-      <td>2024-10-30</td>
-      <td>20586.550</td>
-      <td>20681.520</td>
-      <td>20270.070</td>
-      <td>20380.641</td>
-      <td>1.554090e+10</td>
-    </tr>
-    <tr>
-      <th>2756</th>
-      <td>2024-10-31</td>
-      <td>20414.200</td>
-      <td>20553.300</td>
-      <td>20317.330</td>
-      <td>20317.330</td>
-      <td>1.642446e+10</td>
-    </tr>
-  </tbody>
-</table>
-<p>2757 rows × 6 columns</p>
-</div></div></div>
+<span class="ne">MaxRetryError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/adapters.py:486,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">485</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">486</span>     <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">487</span>         <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">489</span>         <span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span>         <span class="n">headers</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span>         <span class="n">redirect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">492</span>         <span class="n">assert_same_host</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span>         <span class="n">preload_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">495</span>         <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">498</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">500</span> <span class="k">except</span> <span class="p">(</span><span class="n">ProtocolError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py:844,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">842</span>     <span class="n">new_e</span> <span class="o">=</span> <span class="n">ProtocolError</span><span class="p">(</span><span class="s2">&quot;Connection aborted.&quot;</span><span class="p">,</span> <span class="n">new_e</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">844</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">retries</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">845</span>     <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="n">new_e</span><span class="p">,</span> <span class="n">_pool</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">_stacktrace</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">846</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">847</span> <span class="n">retries</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py:515,</span> in <span class="ni">Retry.increment</span><span class="nt">(self, method, url, response, error, _pool, _stacktrace)</span>
+<span class="g g-Whitespace">    </span><span class="mi">514</span>     <span class="n">reason</span> <span class="o">=</span> <span class="n">error</span> <span class="ow">or</span> <span class="n">ResponseError</span><span class="p">(</span><span class="n">cause</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">515</span>     <span class="k">raise</span> <span class="n">MaxRetryError</span><span class="p">(</span><span class="n">_pool</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">reason</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">reason</span>  <span class="c1"># type: ignore[arg-type]</span>
+<span class="g g-Whitespace">    </span><span class="mi">517</span> <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Incremented Retry for (url=&#39;</span><span class="si">%s</span><span class="s2">&#39;): </span><span class="si">%r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">new_retry</span><span class="p">)</span>
+
+<span class="nn">MaxRetryError: HTTPSConnectionPool(host=&#39;finance.sina.com.cn&#39;, port=443): Max retries exceeded with url: /stock/hkstock/HSI/klc_kl.js (Caused by SSLError(SSLEOFError(8, &#39;[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred</span> in <span class="ni">violation of protocol </span><span class="nt">(_ssl.c:1006)&#39;)))</span>
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">SSLError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">stock_hk_daily_hfq_df</span> <span class="o">=</span> <span class="n">ak</span><span class="o">.</span><span class="n">stock_hk_daily</span><span class="p">(</span><span class="n">symbol</span><span class="o">=</span><span class="s2">&quot;HSI&quot;</span><span class="p">,</span> <span class="n">adjust</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">stock_hk_daily_hfq_df</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/akshare/stock/stock_hk_sina.py:72,</span> in <span class="ni">stock_hk_daily</span><span class="nt">(symbol, adjust)</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span> <span class="k">def</span> <span class="nf">stock_hk_daily</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;00981&quot;</span><span class="p">,</span> <span class="n">adjust</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="sd">     新浪财经-港股-个股的历史行情数据</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="sd">     https://stock.finance.sina.com.cn/hkstock/quotes/02912.html</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="sd">     :rtype: pandas.DataFrame</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">72</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hk_sina_stock_hist_url</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">symbol</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="n">js_code</span> <span class="o">=</span> <span class="n">py_mini_racer</span><span class="o">.</span><span class="n">MiniRacer</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="n">js_code</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">hk_js_decode</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/api.py:73,</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="w">     </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sends a GET request.</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="sd">     :param url: URL for the new :class:`Request` object.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="sd">     :rtype: requests.Response</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">73</span>     <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/api.py:59,</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="c1"># By using the &#39;with&#39; statement we are sure the session is closed, thus we</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="c1"># avoid leaving sockets open which can trigger a ResourceWarning in some</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="c1"># cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">with</span> <span class="n">sessions</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">59</span>     <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:589,</span> in <span class="ni">Session.request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span> <span class="n">send_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span>     <span class="s2">&quot;timeout&quot;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span>     <span class="s2">&quot;allow_redirects&quot;</span><span class="p">:</span> <span class="n">allow_redirects</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span> <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span> <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">589</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">return</span> <span class="n">resp</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:703,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span> <span class="n">start</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="c1"># Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">703</span> <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="c1"># Total elapsed time of the request (approximately)</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/adapters.py:517,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">513</span>         <span class="k">raise</span> <span class="n">ProxyError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">515</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span> <span class="n">_SSLError</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">516</span>         <span class="c1"># This branch is for urllib3 v1.22 and later.</span>
+<span class="ne">--&gt; </span><span class="mi">517</span>         <span class="k">raise</span> <span class="n">SSLError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">519</span>     <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">521</span> <span class="k">except</span> <span class="n">ClosedPoolError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">SSLError: HTTPSConnectionPool(host=&#39;finance.sina.com.cn&#39;, port=443): Max retries exceeded with url: /stock/hkstock/HSI/klc_kl.js (Caused by SSLError(SSLEOFError(8, &#39;[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred</span> in <span class="ni">violation of protocol </span><span class="nt">(_ssl.c:1006)&#39;)))</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

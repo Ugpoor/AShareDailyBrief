@@ -598,145 +598,24 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>标题</th>
-      <th>摘要</th>
-      <th>发布时间</th>
-      <th>链接</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>创业板指涨幅扩大至4% 航天航空、券商、多元金融板块领涨</td>
-      <td>【行情】创业板指涨幅扩大至4%，航天航空、券商、多元金融板块领涨。</td>
-      <td>2024-11-05 10:16:32</td>
-      <td>https://finance.eastmoney.com/a/20241105322928...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>大幅领跑！金融科技再度爆发 赢时胜冲击涨停 金融科技ETF大涨7% 成交额快速突破2亿元</td>
-      <td>【大幅领跑！金融科技再度爆发 赢时胜冲击涨停 金融科技ETF大涨7% 成交额快速突破2亿元】...</td>
-      <td>2024-11-05 10:15:38</td>
-      <td>https://finance.eastmoney.com/a/20241105322928...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>芯片国产替代加速 芯片ETF基金（159599）涨超3%</td>
-      <td>【芯片国产替代加速 芯片ETF基金（159599）涨超3%】11月5日，芯片ETF基金（15...</td>
-      <td>2024-11-05 10:14:09</td>
-      <td>https://finance.eastmoney.com/a/20241105322927...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>推动科技创新！科创100指数ETF强势涨超2%</td>
-      <td>【推动科技创新！科创100指数ETF强势涨超2%】科创100指数（000698）持续拉升超2...</td>
-      <td>2024-11-05 10:13:10</td>
-      <td>https://finance.eastmoney.com/a/20241105322927...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>金融科技股持续走高 赢时胜4天3板</td>
-      <td>【金融科技股持续走高 赢时胜4天3板】受券商股大涨带动，金融科技概念股持续走高，赢时胜4天3...</td>
-      <td>2024-11-05 10:13:04</td>
-      <td>https://finance.eastmoney.com/a/20241105322927...</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>195</th>
-      <td>Constellation Energy下跌12%</td>
-      <td>Constellation Energy下跌12%，创该公司美国IPO以来最大盘中跌幅。</td>
-      <td>2024-11-04 22:37:58</td>
-      <td>https://finance.eastmoney.com/a/20241104322853...</td>
-    </tr>
-    <tr>
-      <th>196</th>
-      <td>超微电脑股价下跌8%</td>
-      <td>超微电脑股价下跌8%，4天累计跌幅超过50%。</td>
-      <td>2024-11-04 22:37:10</td>
-      <td>https://finance.eastmoney.com/a/20241104322853...</td>
-    </tr>
-    <tr>
-      <th>197</th>
-      <td>特朗普传媒科技集团股价上涨5%</td>
-      <td>特朗普传媒科技集团股价上涨5%，抹去盘前跌幅。</td>
-      <td>2024-11-04 22:36:29</td>
-      <td>https://finance.eastmoney.com/a/20241104322853...</td>
-    </tr>
-    <tr>
-      <th>198</th>
-      <td>英伟达超越苹果重新成为全球市值最高的公司</td>
-      <td>【英伟达超越苹果重新成为全球市值最高的公司】英伟达涨1.4%，总市值达3.37万亿美元，超越...</td>
-      <td>2024-11-04 22:32:52</td>
-      <td>https://finance.eastmoney.com/a/20241104322853...</td>
-    </tr>
-    <tr>
-      <th>199</th>
-      <td>美股基本平开 核电股集体下挫</td>
-      <td>【美股基本平开 核电股集体下挫】美股基本平开，道指跌0.05%，纳指跌0.10%，标普500...</td>
-      <td>2024-11-04 22:30:45</td>
-      <td>https://finance.eastmoney.com/a/20241104322853...</td>
-    </tr>
-  </tbody>
-</table>
-<p>200 rows × 4 columns</p>
-</div></div></div>
-</div>
-</section>
-<section id="id5">
-<h3>1.4 新浪国际财经<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">news_sinagj</span> <span class="o">=</span> <span class="n">ak</span><span class="o">.</span><span class="n">stock_info_global_sina</span><span class="p">()</span>
-<span class="n">news_sinagj</span><span class="p">[</span><span class="s1">&#39;时间&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">news_sinagj</span><span class="p">[</span><span class="s1">&#39;时间&#39;</span><span class="p">])</span>
-<span class="n">news_sinagj</span><span class="p">[</span><span class="n">news_sinagj</span><span class="p">[</span><span class="s1">&#39;时间&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="n">lastday</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">news_sinagj</span> <span class="o">=</span> <span class="n">ak</span><span class="o">.</span><span class="n">stock_info_global_sina</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">news_sinagj</span><span class="p">[</span><span class="s1">&#39;时间&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">news_sinagj</span><span class="p">[</span><span class="s1">&#39;时间&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">news_sinagj</span><span class="p">[</span><span class="n">news_sinagj</span><span class="p">[</span><span class="s1">&#39;时间&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="n">lastday</span><span class="p">]</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">news_dfgj</span> <span class="o">=</span> <span class="n">ak</span><span class="o">.</span><span class="n">stock_info_global_em</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">news_dfgj</span><span class="p">[</span><span class="s1">&#39;发布时间&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">news_dfgj</span><span class="p">[</span><span class="s1">&#39;发布时间&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">news_dfgj</span><span class="p">[</span><span class="n">news_dfgj</span><span class="p">[</span><span class="s1">&#39;发布时间&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="n">lastday</span><span class="p">]</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_info.py:109,</span> in <span class="ni">stock_info_global_sina</span><span class="nt">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://zhibo.sina.com.cn/api/zhibo/feed&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">    </span><span class="mi">100</span>     <span class="s2">&quot;page&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">101</span>     <span class="s2">&quot;page_size&quot;</span><span class="p">:</span> <span class="s2">&quot;20&quot;</span><span class="p">,</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_info.py:72,</span> in <span class="ni">stock_info_global_em</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://np-weblist.eastmoney.com/comm/web/getFastNewsList&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span>     <span class="s2">&quot;client&quot;</span><span class="p">:</span> <span class="s2">&quot;web&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span>     <span class="s2">&quot;biz&quot;</span><span class="p">:</span> <span class="s2">&quot;web_724&quot;</span><span class="p">,</span>
    <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span>     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="p">}</span>
-<span class="ne">--&gt; </span><span class="mi">109</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="n">data_json</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="n">time_list</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span>     <span class="n">item</span><span class="p">[</span><span class="s2">&quot;create_time&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data_json</span><span class="p">[</span><span class="s2">&quot;result&quot;</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;feed&quot;</span><span class="p">][</span><span class="s2">&quot;list&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span> <span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span>     <span class="s2">&quot;req_trace&quot;</span><span class="p">:</span> <span class="s2">&quot;1710315450384&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span> <span class="p">}</span>
+<span class="ne">---&gt; </span><span class="mi">72</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="n">data_json</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="n">temp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_json</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;fastNewsList&quot;</span><span class="p">])</span>
 
 <span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/api.py:73,</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
 <span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -764,85 +643,66 @@ document.write(`
 <span class="ne">--&gt; </span><span class="mi">589</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">return</span> <span class="n">resp</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:703,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span> <span class="n">start</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="c1"># Send the request</span>
-<span class="ne">--&gt; </span><span class="mi">703</span> <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="c1"># Total elapsed time of the request (approximately)</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:747,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">744</span>         <span class="k">pass</span>
+<span class="g g-Whitespace">    </span><span class="mi">746</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">stream</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">747</span>     <span class="n">r</span><span class="o">.</span><span class="n">content</span>
+<span class="g g-Whitespace">    </span><span class="mi">749</span> <span class="k">return</span> <span class="n">r</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/adapters.py:486,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">483</span>     <span class="n">timeout</span> <span class="o">=</span> <span class="n">TimeoutSauce</span><span class="p">(</span><span class="n">connect</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">read</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">485</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">486</span>     <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">487</span>         <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">488</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">489</span>         <span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span>         <span class="n">headers</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">491</span>         <span class="n">redirect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">492</span>         <span class="n">assert_same_host</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">493</span>         <span class="n">preload_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">495</span>         <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">498</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span> <span class="k">except</span> <span class="p">(</span><span class="n">ProtocolError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/models.py:899,</span> in <span class="ni">Response.content</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">897</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_content</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">898</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">899</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_content</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">CONTENT_CHUNK_SIZE</span><span class="p">))</span> <span class="ow">or</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">901</span> <span class="bp">self</span><span class="o">.</span><span class="n">_content_consumed</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">902</span> <span class="c1"># don&#39;t need to release the connection; that&#39;s been handled by urllib3</span>
+<span class="g g-Whitespace">    </span><span class="mi">903</span> <span class="c1"># since we exhausted the data.</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py:790,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">787</span> <span class="n">response_conn</span> <span class="o">=</span> <span class="n">conn</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">release_conn</span> <span class="k">else</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">789</span> <span class="c1"># Make the request on the HTTPConnection object</span>
-<span class="ne">--&gt; </span><span class="mi">790</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">791</span>     <span class="n">conn</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">792</span>     <span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">793</span>     <span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">794</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">795</span>     <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">797</span>     <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">798</span>     <span class="n">retries</span><span class="o">=</span><span class="n">retries</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">799</span>     <span class="n">response_conn</span><span class="o">=</span><span class="n">response_conn</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">800</span>     <span class="n">preload_content</span><span class="o">=</span><span class="n">preload_content</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">801</span>     <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">802</span>     <span class="o">**</span><span class="n">response_kw</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">803</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">805</span> <span class="c1"># Everything went great!</span>
-<span class="g g-Whitespace">    </span><span class="mi">806</span> <span class="n">clean_exit</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/models.py:816,</span> in <span class="ni">Response.iter_content.&lt;locals&gt;.generate</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">814</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span> <span class="s2">&quot;stream&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">815</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">816</span>         <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">chunk_size</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">817</span>     <span class="k">except</span> <span class="n">ProtocolError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">818</span>         <span class="k">raise</span> <span class="n">ChunkedEncodingError</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py:536,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
-<span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="c1"># Receive the response from the server</span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">536</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">537</span> <span class="k">except</span> <span class="p">(</span><span class="n">BaseSSLError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">538</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_raise_timeout</span><span class="p">(</span><span class="n">err</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout_value</span><span class="o">=</span><span class="n">read_timeout</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/response.py:937,</span> in <span class="ni">HTTPResponse.stream</span><span class="nt">(self, amt, decode_content)</span>
+<span class="g g-Whitespace">    </span><span class="mi">921</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">922</span><span class="sd"> A generator wrapper for the read() method. A call will block until</span>
+<span class="g g-Whitespace">    </span><span class="mi">923</span><span class="sd"> ``amt`` bytes have been read from the connection or until the</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">934</span><span class="sd">     &#39;content-encoding&#39; header.</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">936</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunked</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">supports_chunked_reads</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">937</span>     <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_chunked</span><span class="p">(</span><span class="n">amt</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">938</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">939</span>     <span class="k">while</span> <span class="ow">not</span> <span class="n">is_fp_closed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_decoded_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/connection.py:454,</span> in <span class="ni">HTTPConnection.getresponse</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">451</span> <span class="kn">from</span> <span class="nn">.response</span> <span class="kn">import</span> <span class="n">HTTPResponse</span>
-<span class="g g-Whitespace">    </span><span class="mi">453</span> <span class="c1"># Get the response from http.client.HTTPConnection</span>
-<span class="ne">--&gt; </span><span class="mi">454</span> <span class="n">httplib_response</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">456</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">457</span>     <span class="n">assert_header_parsing</span><span class="p">(</span><span class="n">httplib_response</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/response.py:1080,</span> in <span class="ni">HTTPResponse.read_chunked</span><span class="nt">(self, amt, decode_content)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1078</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1079</span>     <span class="k">break</span>
+<span class="ne">-&gt; </span><span class="mi">1080</span> <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_chunk</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1081</span> <span class="n">decoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1082</span>     <span class="n">chunk</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">,</span> <span class="n">flush_decoder</span><span class="o">=</span><span class="kc">False</span>
+<span class="g g-Whitespace">   </span><span class="mi">1083</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1084</span> <span class="k">if</span> <span class="n">decoded</span><span class="p">:</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/http/client.py:1378,</span> in <span class="ni">HTTPConnection.getresponse</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1376</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1377</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1378</span>         <span class="n">response</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1379</span>     <span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1380</span>         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/response.py:1022,</span> in <span class="ni">HTTPResponse._handle_chunk</span><span class="nt">(self, amt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1020</span>     <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1021</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">amt</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1022</span>     <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">_safe_read</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>  <span class="c1"># type: ignore[union-attr]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span>     <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">-</span> <span class="n">amt</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span>     <span class="n">returned_chunk</span> <span class="o">=</span> <span class="n">value</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/http/client.py:318,</span> in <span class="ni">HTTPResponse.begin</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">316</span> <span class="c1"># read until we get a non-100 response</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">318</span>     <span class="n">version</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">reason</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_status</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span>     <span class="k">if</span> <span class="n">status</span> <span class="o">!=</span> <span class="n">CONTINUE</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">320</span>         <span class="k">break</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/http/client.py:279,</span> in <span class="ni">HTTPResponse._read_status</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span> <span class="k">def</span> <span class="nf">_read_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">279</span>     <span class="n">line</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">(</span><span class="n">_MAXLINE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;iso-8859-1&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">_MAXLINE</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">281</span>         <span class="k">raise</span> <span class="n">LineTooLong</span><span class="p">(</span><span class="s2">&quot;status line&quot;</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/http/client.py:631,</span> in <span class="ni">HTTPResponse._safe_read</span><span class="nt">(self, amt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">624</span> <span class="k">def</span> <span class="nf">_safe_read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amt</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">625</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Read the number of bytes requested.</span>
+<span class="g g-Whitespace">    </span><span class="mi">626</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span><span class="sd">     This function should be used when &lt;amt&gt; bytes &quot;should&quot; be present for</span>
+<span class="g g-Whitespace">    </span><span class="mi">628</span><span class="sd">     reading. If the bytes are truly not available (due to EOF), then the</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span><span class="sd">     IncompleteRead exception can be used to detect the problem.</span>
+<span class="g g-Whitespace">    </span><span class="mi">630</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">631</span>     <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">632</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">amt</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span>         <span class="k">raise</span> <span class="n">IncompleteRead</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">amt</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 
 <span class="nn">File ~/anaconda3/lib/python3.11/socket.py:706,</span> in <span class="ni">SocketIO.readinto</span><span class="nt">(self, b)</span>
 <span class="g g-Whitespace">    </span><span class="mi">704</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -871,6 +731,145 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</div>
+</section>
+<section id="id5">
+<h3>1.4 新浪国际财经<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">news_sinagj</span> <span class="o">=</span> <span class="n">ak</span><span class="o">.</span><span class="n">stock_info_global_sina</span><span class="p">()</span>
+<span class="n">news_sinagj</span><span class="p">[</span><span class="s1">&#39;时间&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">news_sinagj</span><span class="p">[</span><span class="s1">&#39;时间&#39;</span><span class="p">])</span>
+<span class="n">news_sinagj</span><span class="p">[</span><span class="n">news_sinagj</span><span class="p">[</span><span class="s1">&#39;时间&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="n">lastday</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>时间</th>
+      <th>内容</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2024-10-30 09:11:04</td>
+      <td>【伊朗外长：伊朗对以色列袭击的回应措施不会拖延 也不会仓促】伊朗外长阿拉格齐当地时间29日在...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2024-10-30 09:10:20</td>
+      <td>【40只港股昨日获公司回购，友邦保险、太古股份公司A、中国石油化工股份回购金额最大】 10月...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2024-10-30 09:09:54</td>
+      <td>【409股获券商买入评级，药明康德目标涨幅达79.7% 】Wind数据显示，10月29日，共...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2024-10-30 09:09:04</td>
+      <td>【张玉卓会见南非总统府规划、监督和评估部长马罗佩尼·拉莫豪帕】10月28日，国务院国资委主任...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2024-10-30 09:08:00</td>
+      <td>【伊朗政府计划将军事预算提高约200%】 当地时间10月29日，伊朗政府发言人莫哈杰拉尼表示...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2024-10-30 09:07:52</td>
+      <td>【博时科创100ETF、科创50ETF宣布降费】10月30日，博时基金旗下两只ETF加入降费...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2024-10-30 09:06:14</td>
+      <td>【国务院国资委举办中央企业援疆援藏培训班】10月24日至25日，国务院国资委社会责任局在江西...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2024-10-30 09:05:20</td>
+      <td>期权交易员增加了押注，认为无论谁赢得美国大选，比特币到11月底最高将达到80000美元。11...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2024-10-30 09:03:32</td>
+      <td>【东莞证券：铝合金终端应用蓄势待发】东莞证券研报指出，铝合金凭借着轻质、高强、耐腐蚀、散热强...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2024-10-30 09:03:03</td>
+      <td>【昨夜，“特朗普交易”熔断】当地时间周二，美股主要股指涨跌互现，大型科技股推动纳斯达克指数再...</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2024-10-30 09:02:43</td>
+      <td>【山西进一步提高科技资源利用效率和共享水平】近日，山西省科技厅和省教育厅、省财政厅、省人力资...</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2024-10-30 09:02:19</td>
+      <td>【看图：比特币即将突破3月份纪录高位 分析师称市场预期特朗普获胜】 比特币一番大涨后，即将突...</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2024-10-30 09:00:52</td>
+      <td>富时中国A50指数期货盘初涨0.1%。</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2024-10-30 09:00:42</td>
+      <td>早盘开盘，国内期货主力合约涨跌不一。沪金、沪银、苹果涨超1%，棕榈油、低硫燃料油涨近1%；跌...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2024-10-30 08:58:42</td>
+      <td>【欧委会公布对华电动汽车反补贴调查终裁结果 商务部：不认同、不接受，已提出诉讼】商务部新闻发...</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2024-10-30 08:58:05</td>
+      <td>【以色列宣布联合国秘书长为“不受欢迎的人”，巴勒斯坦代表：以色列这是在向联合国开战】 联合国...</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2024-10-30 08:56:35</td>
+      <td>【普利制药与宁丹新药签署创新药临床研究阶段CMO合作协议】 近日，浙江普利药业有限公司（简称...</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2024-10-30 08:55:50</td>
+      <td>【中原证券：电力板块整体估值仍处于合理区间】中原证券研报指出，电力板块整体估值仍处于合理区间...</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2024-10-30 08:55:09</td>
+      <td>【银河证券：畜禽养殖链为当前关注点】银河证券研报指出，畜禽养殖链为当前关注点。1）综合考虑行...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2024-10-30 08:54:05</td>
+      <td>【经济日报：别把购物节弄成算术节】从营销角度看，满减规则和发券发红包确实是有效策略，它能够鼓...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 </section>

@@ -18,9 +18,9 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-stocksymb='300339'
-periods=['daily','weekly','monthly']
-stockDict=plotDcStocks(stocksymb,periods)
+news_sinagj = ak.stock_info_global_sina()
+news_sinagj['时间']=pd.to_datetime(news_sinagj['时间'])
+news_sinagj[news_sinagj['时间']>lastday]
 ------------------
 
 
@@ -60,51 +60,29 @@ File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py:515[
 [0;32m--> 515[0m     [38;5;28;01mraise[39;00m MaxRetryError(_pool, url, reason) [38;5;28;01mfrom[39;00m [38;5;21;01mreason[39;00m  [38;5;66;03m# type: ignore[arg-type][39;00m
 [1;32m    517[0m log[38;5;241m.[39mdebug([38;5;124m"[39m[38;5;124mIncremented Retry for (url=[39m[38;5;124m'[39m[38;5;132;01m%s[39;00m[38;5;124m'[39m[38;5;124m): [39m[38;5;132;01m%r[39;00m[38;5;124m"[39m, url, new_retry)
 
-[0;31mMaxRetryError[0m: HTTPSConnectionPool(host='80.push2delay.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=50000&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f3&fs=m%3A0+t%3A6%2Cm%3A0+t%3A80&fields=f12&_=1623833739532 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)')))
+[0;31mMaxRetryError[0m: HTTPSConnectionPool(host='zhibo.sina.com.cn', port=443): Max retries exceeded with url: /api/zhibo/feed?page=1&page_size=20&zhibo_id=152&tag_id=0&dire=f&dpc=1&pagesize=20&type=1 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)')))
 
 During handling of the above exception, another exception occurred:
 
 [0;31mSSLError[0m                                  Traceback (most recent call last)
-Cell [0;32mIn[28], line 3[0m
-[1;32m      1[0m stocksymb[38;5;241m=[39m[38;5;124m'[39m[38;5;124m300339[39m[38;5;124m'[39m
-[1;32m      2[0m periods[38;5;241m=[39m[[38;5;124m'[39m[38;5;124mdaily[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mweekly[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mmonthly[39m[38;5;124m'[39m]
-[0;32m----> 3[0m stockDict[38;5;241m=[39mplotDcStocks(stocksymb,periods)
+Cell [0;32mIn[4], line 1[0m
+[0;32m----> 1[0m news_sinagj [38;5;241m=[39m ak[38;5;241m.[39mstock_info_global_sina()
+[1;32m      2[0m news_sinagj[[38;5;124m'[39m[38;5;124m时间[39m[38;5;124m'[39m][38;5;241m=[39mpd[38;5;241m.[39mto_datetime(news_sinagj[[38;5;124m'[39m[38;5;124m时间[39m[38;5;124m'[39m])
+[1;32m      3[0m news_sinagj[news_sinagj[[38;5;124m'[39m[38;5;124m时间[39m[38;5;124m'[39m][38;5;241m>[39mlastday]
 
-Cell [0;32mIn[27], line 4[0m, in [0;36mplotDcStocks[0;34m(stocksymb, periods)[0m
-[1;32m      2[0m stockDict[38;5;241m=[39m{}
-[1;32m      3[0m [38;5;28;01mfor[39;00m p [38;5;129;01min[39;00m periods:
-[0;32m----> 4[0m     stockdf [38;5;241m=[39m ak[38;5;241m.[39mstock_zh_a_hist(symbol[38;5;241m=[39mstocksymb,period[38;5;241m=[39mp)
-[1;32m      5[0m     stocknamedf[38;5;241m=[39mak[38;5;241m.[39mstock_individual_info_em(symbol[38;5;241m=[39mstocksymb)
-[1;32m      6[0m     stockname[38;5;241m=[39mstocknamedf[38;5;241m.[39mloc[stocknamedf[[38;5;124m'[39m[38;5;124mitem[39m[38;5;124m'[39m][38;5;241m==[39m[38;5;124m'[39m[38;5;124m股票简称[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mvalue[39m[38;5;124m'[39m][[38;5;241m1[39m]
-
-File [0;32m~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_hist_em.py:1041[0m, in [0;36mstock_zh_a_hist[0;34m(symbol, period, start_date, end_date, adjust, timeout)[0m
-[1;32m   1015[0m [38;5;28;01mdef[39;00m [38;5;21mstock_zh_a_hist[39m(
-[1;32m   1016[0m     symbol: [38;5;28mstr[39m [38;5;241m=[39m [38;5;124m"[39m[38;5;124m000001[39m[38;5;124m"[39m,
-[1;32m   1017[0m     period: [38;5;28mstr[39m [38;5;241m=[39m [38;5;124m"[39m[38;5;124mdaily[39m[38;5;124m"[39m,
+File [0;32m~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_info.py:109[0m, in [0;36mstock_info_global_sina[0;34m()[0m
+[1;32m     98[0m url [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhttps://zhibo.sina.com.cn/api/zhibo/feed[39m[38;5;124m"[39m
+[1;32m     99[0m params [38;5;241m=[39m {
+[1;32m    100[0m     [38;5;124m"[39m[38;5;124mpage[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m1[39m[38;5;124m"[39m,
+[1;32m    101[0m     [38;5;124m"[39m[38;5;124mpage_size[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m20[39m[38;5;124m"[39m,
 [0;32m   (...)[0m
-[1;32m   1021[0m     timeout: [38;5;28mfloat[39m [38;5;241m=[39m [38;5;28;01mNone[39;00m,
-[1;32m   1022[0m ) [38;5;241m-[39m[38;5;241m>[39m pd[38;5;241m.[39mDataFrame:
-[1;32m   1023[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
-[1;32m   1024[0m [38;5;124;03m    东方财富网-行情首页-沪深京 A 股-每日行情[39;00m
-[1;32m   1025[0m [38;5;124;03m    https://quote.eastmoney.com/concept/sh603777.html?from=classic[39;00m
-[0;32m   (...)[0m
-[1;32m   1039[0m [38;5;124;03m    :rtype: pandas.DataFrame[39;00m
-[1;32m   1040[0m [38;5;124;03m    """[39;00m
-[0;32m-> 1041[0m     code_id_dict [38;5;241m=[39m code_id_map_em()
-[1;32m   1042[0m     adjust_dict [38;5;241m=[39m {[38;5;124m"[39m[38;5;124mqfq[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m1[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mhfq[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m2[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m0[39m[38;5;124m"[39m}
-[1;32m   1043[0m     period_dict [38;5;241m=[39m {[38;5;124m"[39m[38;5;124mdaily[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m101[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mweekly[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m102[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mmonthly[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m103[39m[38;5;124m"[39m}
-
-File [0;32m~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_hist_em.py:985[0m, in [0;36mcode_id_map_em[0;34m()[0m
-[1;32m    971[0m code_id_dict [38;5;241m=[39m [38;5;28mdict[39m([38;5;28mzip[39m(temp_df[[38;5;124m"[39m[38;5;124msh_code[39m[38;5;124m"[39m], temp_df[[38;5;124m"[39m[38;5;124msh_id[39m[38;5;124m"[39m]))
-[1;32m    972[0m params [38;5;241m=[39m {
-[1;32m    973[0m     [38;5;124m"[39m[38;5;124mpn[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m1[39m[38;5;124m"[39m,
-[1;32m    974[0m     [38;5;124m"[39m[38;5;124mpz[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m50000[39m[38;5;124m"[39m,
-[0;32m   (...)[0m
-[1;32m    983[0m     [38;5;124m"[39m[38;5;124m_[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m1623833739532[39m[38;5;124m"[39m,
-[1;32m    984[0m }
-[0;32m--> 985[0m r [38;5;241m=[39m requests[38;5;241m.[39mget(url, timeout[38;5;241m=[39m[38;5;241m15[39m, params[38;5;241m=[39mparams)
-[1;32m    986[0m data_json [38;5;241m=[39m r[38;5;241m.[39mjson()
-[1;32m    987[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m data_json[[38;5;124m"[39m[38;5;124mdata[39m[38;5;124m"[39m][[38;5;124m"[39m[38;5;124mdiff[39m[38;5;124m"[39m]:
+[1;32m    107[0m     [38;5;124m"[39m[38;5;124mtype[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m1[39m[38;5;124m"[39m,
+[1;32m    108[0m }
+[0;32m--> 109[0m r [38;5;241m=[39m requests[38;5;241m.[39mget(url, params[38;5;241m=[39mparams)
+[1;32m    110[0m data_json [38;5;241m=[39m r[38;5;241m.[39mjson()
+[1;32m    111[0m time_list [38;5;241m=[39m [
+[1;32m    112[0m     item[[38;5;124m"[39m[38;5;124mcreate_time[39m[38;5;124m"[39m] [38;5;28;01mfor[39;00m item [38;5;129;01min[39;00m data_json[[38;5;124m"[39m[38;5;124mresult[39m[38;5;124m"[39m][[38;5;124m"[39m[38;5;124mdata[39m[38;5;124m"[39m][[38;5;124m"[39m[38;5;124mfeed[39m[38;5;124m"[39m][[38;5;124m"[39m[38;5;124mlist[39m[38;5;124m"[39m]
+[1;32m    113[0m ]
 
 File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/api.py:73[0m, in [0;36mget[0;34m(url, params, **kwargs)[0m
 [1;32m     62[0m [38;5;28;01mdef[39;00m [38;5;21mget[39m(url, params[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
@@ -132,38 +110,6 @@ File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:589[0
 [0;32m--> 589[0m resp [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39msend(prep, [38;5;241m*[39m[38;5;241m*[39msend_kwargs)
 [1;32m    591[0m [38;5;28;01mreturn[39;00m resp
 
-File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:725[0m, in [0;36mSession.send[0;34m(self, request, **kwargs)[0m
-[1;32m    722[0m [38;5;28;01mif[39;00m allow_redirects:
-[1;32m    723[0m     [38;5;66;03m# Redirect resolving generator.[39;00m
-[1;32m    724[0m     gen [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mresolve_redirects(r, request, [38;5;241m*[39m[38;5;241m*[39mkwargs)
-[0;32m--> 725[0m     history [38;5;241m=[39m [resp [38;5;28;01mfor[39;00m resp [38;5;129;01min[39;00m gen]
-[1;32m    726[0m [38;5;28;01melse[39;00m:
-[1;32m    727[0m     history [38;5;241m=[39m []
-
-File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:725[0m, in [0;36m<listcomp>[0;34m(.0)[0m
-[1;32m    722[0m [38;5;28;01mif[39;00m allow_redirects:
-[1;32m    723[0m     [38;5;66;03m# Redirect resolving generator.[39;00m
-[1;32m    724[0m     gen [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mresolve_redirects(r, request, [38;5;241m*[39m[38;5;241m*[39mkwargs)
-[0;32m--> 725[0m     history [38;5;241m=[39m [resp [38;5;28;01mfor[39;00m resp [38;5;129;01min[39;00m gen]
-[1;32m    726[0m [38;5;28;01melse[39;00m:
-[1;32m    727[0m     history [38;5;241m=[39m []
-
-File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:266[0m, in [0;36mSessionRedirectMixin.resolve_redirects[0;34m(self, resp, req, stream, timeout, verify, cert, proxies, yield_requests, **adapter_kwargs)[0m
-[1;32m    263[0m     [38;5;28;01myield[39;00m req
-[1;32m    264[0m [38;5;28;01melse[39;00m:
-[0;32m--> 266[0m     resp [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39msend(
-[1;32m    267[0m         req,
-[1;32m    268[0m         stream[38;5;241m=[39mstream,
-[1;32m    269[0m         timeout[38;5;241m=[39mtimeout,
-[1;32m    270[0m         verify[38;5;241m=[39mverify,
-[1;32m    271[0m         cert[38;5;241m=[39mcert,
-[1;32m    272[0m         proxies[38;5;241m=[39mproxies,
-[1;32m    273[0m         allow_redirects[38;5;241m=[39m[38;5;28;01mFalse[39;00m,
-[1;32m    274[0m         [38;5;241m*[39m[38;5;241m*[39madapter_kwargs,
-[1;32m    275[0m     )
-[1;32m    277[0m     extract_cookies_to_jar([38;5;28mself[39m[38;5;241m.[39mcookies, prepared_request, resp[38;5;241m.[39mraw)
-[1;32m    279[0m     [38;5;66;03m# extract redirect url, if any, for the next loop[39;00m
-
 File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:703[0m, in [0;36mSession.send[0;34m(self, request, **kwargs)[0m
 [1;32m    700[0m start [38;5;241m=[39m preferred_clock()
 [1;32m    702[0m [38;5;66;03m# Send the request[39;00m
@@ -179,5 +125,5 @@ File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/adapters.py:517[0
 [1;32m    519[0m     [38;5;28;01mraise[39;00m [38;5;167;01mConnectionError[39;00m(e, request[38;5;241m=[39mrequest)
 [1;32m    521[0m [38;5;28;01mexcept[39;00m ClosedPoolError [38;5;28;01mas[39;00m e:
 
-[0;31mSSLError[0m: HTTPSConnectionPool(host='80.push2delay.eastmoney.com', port=443): Max retries exceeded with url: /api/qt/clist/get?pn=1&pz=50000&po=1&np=1&ut=bd1d9ddb04089700cf9c27f6f7426281&fltt=2&invt=2&fid=f3&fs=m%3A0+t%3A6%2Cm%3A0+t%3A80&fields=f12&_=1623833739532 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)')))
+[0;31mSSLError[0m: HTTPSConnectionPool(host='zhibo.sina.com.cn', port=443): Max retries exceeded with url: /api/zhibo/feed?page=1&page_size=20&zhibo_id=152&tag_id=0&dire=f&dpc=1&pagesize=20&type=1 (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)')))
 

@@ -18,13 +18,8 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import akshare as ak
-from datetime import datetime, time
-import pandas as pd
-
-news_dfgn = ak.stock_info_cjzc_em()
-news_dfgn['发布时间']=pd.to_datetime(news_dfgn['发布时间'])
-news_dfgn[news_dfgn['发布时间']>lastday]
+stock_hk_daily_hfq_df = ak.stock_hk_daily(symbol="HSI", adjust="")
+stock_hk_daily_hfq_df
 ------------------
 
 
@@ -64,24 +59,26 @@ File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py:515[
 [0;32m--> 515[0m     [38;5;28;01mraise[39;00m MaxRetryError(_pool, url, reason) [38;5;28;01mfrom[39;00m [38;5;21;01mreason[39;00m  [38;5;66;03m# type: ignore[arg-type][39;00m
 [1;32m    517[0m log[38;5;241m.[39mdebug([38;5;124m"[39m[38;5;124mIncremented Retry for (url=[39m[38;5;124m'[39m[38;5;132;01m%s[39;00m[38;5;124m'[39m[38;5;124m): [39m[38;5;132;01m%r[39;00m[38;5;124m"[39m, url, new_retry)
 
-[0;31mMaxRetryError[0m: HTTPSConnectionPool(host='np-listapi.eastmoney.com', port=443): Max retries exceeded with url: /comm/web/getNewsByColumns?client=web&biz=web_news_col&column=1207&order=1&needInteractData=0&page_index=1&page_size=200&req_trace=1710314682980&fields=code%2CshowTime%2Ctitle%2CmediaName%2Csummary%2Cimage%2Curl%2CuniqueUrl%2CNp_dst (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)')))
+[0;31mMaxRetryError[0m: HTTPSConnectionPool(host='finance.sina.com.cn', port=443): Max retries exceeded with url: /stock/hkstock/HSI/klc_kl.js (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)')))
 
 During handling of the above exception, another exception occurred:
 
 [0;31mSSLError[0m                                  Traceback (most recent call last)
-Cell [0;32mIn[3], line 5[0m
-[1;32m      2[0m [38;5;28;01mfrom[39;00m [38;5;21;01mdatetime[39;00m [38;5;28;01mimport[39;00m datetime, time
-[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[0;32m----> 5[0m news_dfgn [38;5;241m=[39m ak[38;5;241m.[39mstock_info_cjzc_em()
-[1;32m      6[0m news_dfgn[[38;5;124m'[39m[38;5;124m发布时间[39m[38;5;124m'[39m][38;5;241m=[39mpd[38;5;241m.[39mto_datetime(news_dfgn[[38;5;124m'[39m[38;5;124m发布时间[39m[38;5;124m'[39m])
-[1;32m      7[0m news_dfgn[news_dfgn[[38;5;124m'[39m[38;5;124m发布时间[39m[38;5;124m'[39m][38;5;241m>[39mlastday]
+Cell [0;32mIn[6], line 1[0m
+[0;32m----> 1[0m stock_hk_daily_hfq_df [38;5;241m=[39m ak[38;5;241m.[39mstock_hk_daily(symbol[38;5;241m=[39m[38;5;124m"[39m[38;5;124mHSI[39m[38;5;124m"[39m, adjust[38;5;241m=[39m[38;5;124m"[39m[38;5;124m"[39m)
+[1;32m      2[0m stock_hk_daily_hfq_df
 
-File [0;32m~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_info.py:38[0m, in [0;36mstock_info_cjzc_em[0;34m()[0m
-[1;32m     36[0m [38;5;28;01mfor[39;00m page [38;5;129;01min[39;00m [38;5;28mrange[39m([38;5;241m1[39m, [38;5;241m3[39m):
-[1;32m     37[0m     params[38;5;241m.[39mupdate({[38;5;124m"[39m[38;5;124mpage_index[39m[38;5;124m"[39m: page})
-[0;32m---> 38[0m     r [38;5;241m=[39m requests[38;5;241m.[39mget(url, params[38;5;241m=[39mparams)
-[1;32m     39[0m     data_json [38;5;241m=[39m r[38;5;241m.[39mjson()
-[1;32m     40[0m     temp_df [38;5;241m=[39m pd[38;5;241m.[39mDataFrame(data_json[[38;5;124m"[39m[38;5;124mdata[39m[38;5;124m"[39m][[38;5;124m"[39m[38;5;124mlist[39m[38;5;124m"[39m])
+File [0;32m~/anaconda3/lib/python3.11/site-packages/akshare/stock/stock_hk_sina.py:72[0m, in [0;36mstock_hk_daily[0;34m(symbol, adjust)[0m
+[1;32m     61[0m [38;5;28;01mdef[39;00m [38;5;21mstock_hk_daily[39m(symbol: [38;5;28mstr[39m [38;5;241m=[39m [38;5;124m"[39m[38;5;124m00981[39m[38;5;124m"[39m, adjust: [38;5;28mstr[39m [38;5;241m=[39m [38;5;124m"[39m[38;5;124m"[39m) [38;5;241m-[39m[38;5;241m>[39m pd[38;5;241m.[39mDataFrame:
+[1;32m     62[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
+[1;32m     63[0m [38;5;124;03m    新浪财经-港股-个股的历史行情数据[39;00m
+[1;32m     64[0m [38;5;124;03m    https://stock.finance.sina.com.cn/hkstock/quotes/02912.html[39;00m
+[0;32m   (...)[0m
+[1;32m     70[0m [38;5;124;03m    :rtype: pandas.DataFrame[39;00m
+[1;32m     71[0m [38;5;124;03m    """[39;00m
+[0;32m---> 72[0m     r [38;5;241m=[39m requests[38;5;241m.[39mget(hk_sina_stock_hist_url[38;5;241m.[39mformat(symbol))
+[1;32m     73[0m     js_code [38;5;241m=[39m py_mini_racer[38;5;241m.[39mMiniRacer()
+[1;32m     74[0m     js_code[38;5;241m.[39meval(hk_js_decode)
 
 File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/api.py:73[0m, in [0;36mget[0;34m(url, params, **kwargs)[0m
 [1;32m     62[0m [38;5;28;01mdef[39;00m [38;5;21mget[39m(url, params[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
@@ -124,5 +121,5 @@ File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/adapters.py:517[0
 [1;32m    519[0m     [38;5;28;01mraise[39;00m [38;5;167;01mConnectionError[39;00m(e, request[38;5;241m=[39mrequest)
 [1;32m    521[0m [38;5;28;01mexcept[39;00m ClosedPoolError [38;5;28;01mas[39;00m e:
 
-[0;31mSSLError[0m: HTTPSConnectionPool(host='np-listapi.eastmoney.com', port=443): Max retries exceeded with url: /comm/web/getNewsByColumns?client=web&biz=web_news_col&column=1207&order=1&needInteractData=0&page_index=1&page_size=200&req_trace=1710314682980&fields=code%2CshowTime%2Ctitle%2CmediaName%2Csummary%2Cimage%2Curl%2CuniqueUrl%2CNp_dst (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)')))
+[0;31mSSLError[0m: HTTPSConnectionPool(host='finance.sina.com.cn', port=443): Max retries exceeded with url: /stock/hkstock/HSI/klc_kl.js (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)')))
 

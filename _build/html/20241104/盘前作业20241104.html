@@ -536,55 +536,136 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">time</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">news_dfgn</span> <span class="o">=</span> <span class="n">ak</span><span class="o">.</span><span class="n">stock_info_cjzc_em</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">news_dfgn</span><span class="p">[</span><span class="s1">&#39;发布时间&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">news_dfgn</span><span class="p">[</span><span class="s1">&#39;发布时间&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">news_dfgn</span><span class="p">[</span><span class="n">news_dfgn</span><span class="p">[</span><span class="s1">&#39;发布时间&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="n">lastday</span><span class="p">]</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_info.py:38,</span> in <span class="ni">stock_info_cjzc_em</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;page_index&quot;</span><span class="p">:</span> <span class="n">page</span><span class="p">})</span>
+<span class="ne">---&gt; </span><span class="mi">38</span>     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="n">data_json</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="n">temp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_json</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;list&quot;</span><span class="p">])</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>标题</th>
-      <th>摘要</th>
-      <th>发布时间</th>
-      <th>链接</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>东方财富财经早餐 11月5日周二</td>
-      <td>【财经早餐】1、全国人大常委会审议增加地方政府债务限额置换存量隐性债务的议案。2、国资委：确...</td>
-      <td>2024-11-05 06:00:20</td>
-      <td>http://finance.eastmoney.com/a/202411053228604...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>东方财富财经早餐 11月4日周一</td>
-      <td>【财经早餐】1、六部门：允许外国自然人战略投资，持股锁定最少12个月。2、上交所：始终对各类...</td>
-      <td>2024-11-04 06:00:11</td>
-      <td>http://finance.eastmoney.com/a/202411043227366...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>东方财富财经早餐 11月1日周五</td>
-      <td>【财经早餐】1、《求是》杂志发表习近平总书记重要文章《促进高质量充分就业》。2、央行：10月...</td>
-      <td>2024-11-01 06:00:16</td>
-      <td>http://finance.eastmoney.com/a/202410313225146...</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/api.py:73,</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="w">     </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sends a GET request.</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="sd">     :param url: URL for the new :class:`Request` object.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="sd">     :rtype: requests.Response</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">73</span>     <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/api.py:59,</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="c1"># By using the &#39;with&#39; statement we are sure the session is closed, thus we</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="c1"># avoid leaving sockets open which can trigger a ResourceWarning in some</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="c1"># cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">with</span> <span class="n">sessions</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">59</span>     <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:589,</span> in <span class="ni">Session.request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span> <span class="n">send_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span>     <span class="s2">&quot;timeout&quot;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span>     <span class="s2">&quot;allow_redirects&quot;</span><span class="p">:</span> <span class="n">allow_redirects</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">587</span> <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">588</span> <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">589</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">return</span> <span class="n">resp</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:747,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">744</span>         <span class="k">pass</span>
+<span class="g g-Whitespace">    </span><span class="mi">746</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">stream</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">747</span>     <span class="n">r</span><span class="o">.</span><span class="n">content</span>
+<span class="g g-Whitespace">    </span><span class="mi">749</span> <span class="k">return</span> <span class="n">r</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/models.py:899,</span> in <span class="ni">Response.content</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">897</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_content</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">898</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">899</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_content</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">CONTENT_CHUNK_SIZE</span><span class="p">))</span> <span class="ow">or</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">901</span> <span class="bp">self</span><span class="o">.</span><span class="n">_content_consumed</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">    </span><span class="mi">902</span> <span class="c1"># don&#39;t need to release the connection; that&#39;s been handled by urllib3</span>
+<span class="g g-Whitespace">    </span><span class="mi">903</span> <span class="c1"># since we exhausted the data.</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/models.py:816,</span> in <span class="ni">Response.iter_content.&lt;locals&gt;.generate</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">814</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw</span><span class="p">,</span> <span class="s2">&quot;stream&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">815</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">816</span>         <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">chunk_size</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">817</span>     <span class="k">except</span> <span class="n">ProtocolError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">818</span>         <span class="k">raise</span> <span class="n">ChunkedEncodingError</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/response.py:937,</span> in <span class="ni">HTTPResponse.stream</span><span class="nt">(self, amt, decode_content)</span>
+<span class="g g-Whitespace">    </span><span class="mi">921</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">922</span><span class="sd"> A generator wrapper for the read() method. A call will block until</span>
+<span class="g g-Whitespace">    </span><span class="mi">923</span><span class="sd"> ``amt`` bytes have been read from the connection or until the</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">934</span><span class="sd">     &#39;content-encoding&#39; header.</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">936</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunked</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">supports_chunked_reads</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">937</span>     <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_chunked</span><span class="p">(</span><span class="n">amt</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">938</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">939</span>     <span class="k">while</span> <span class="ow">not</span> <span class="n">is_fp_closed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_decoded_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/response.py:1080,</span> in <span class="ni">HTTPResponse.read_chunked</span><span class="nt">(self, amt, decode_content)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1078</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1079</span>     <span class="k">break</span>
+<span class="ne">-&gt; </span><span class="mi">1080</span> <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_chunk</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1081</span> <span class="n">decoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1082</span>     <span class="n">chunk</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">,</span> <span class="n">flush_decoder</span><span class="o">=</span><span class="kc">False</span>
+<span class="g g-Whitespace">   </span><span class="mi">1083</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1084</span> <span class="k">if</span> <span class="n">decoded</span><span class="p">:</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/urllib3/response.py:1031,</span> in <span class="ni">HTTPResponse._handle_chunk</span><span class="nt">(self, amt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1029</span>     <span class="n">returned_chunk</span> <span class="o">=</span> <span class="n">value</span>
+<span class="g g-Whitespace">   </span><span class="mi">1030</span> <span class="k">else</span><span class="p">:</span>  <span class="c1"># amt &gt; self.chunk_left</span>
+<span class="ne">-&gt; </span><span class="mi">1031</span>     <span class="n">returned_chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">_safe_read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span><span class="p">)</span>  <span class="c1"># type: ignore[union-attr]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1032</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">_safe_read</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># type: ignore[union-attr] # Toss the CRLF at the end of the chunk.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1033</span>     <span class="bp">self</span><span class="o">.</span><span class="n">chunk_left</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/http/client.py:631,</span> in <span class="ni">HTTPResponse._safe_read</span><span class="nt">(self, amt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">624</span> <span class="k">def</span> <span class="nf">_safe_read</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amt</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">625</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Read the number of bytes requested.</span>
+<span class="g g-Whitespace">    </span><span class="mi">626</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span><span class="sd">     This function should be used when &lt;amt&gt; bytes &quot;should&quot; be present for</span>
+<span class="g g-Whitespace">    </span><span class="mi">628</span><span class="sd">     reading. If the bytes are truly not available (due to EOF), then the</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span><span class="sd">     IncompleteRead exception can be used to detect the problem.</span>
+<span class="g g-Whitespace">    </span><span class="mi">630</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">631</span>     <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">632</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">amt</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span>         <span class="k">raise</span> <span class="n">IncompleteRead</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">amt</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/socket.py:706,</span> in <span class="ni">SocketIO.readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">706</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">707</span>     <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">708</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_occurred</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/ssl.py:1311,</span> in <span class="ni">SSLSocket.recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1307</span>     <span class="k">if</span> <span class="n">flags</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1308</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1309</span>           <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+<span class="g g-Whitespace">   </span><span class="mi">1310</span>           <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1311</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1312</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1313</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/ssl.py:1167,</span> in <span class="ni">SSLSocket.read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1165</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1166</span>     <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1167</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1168</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1169</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="id4">
@@ -625,38 +706,38 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>京城股份：天海工业车载液氢瓶国内首次通过全套液氢介质试验 我国车载液氢技术获重大突破</td>
-      <td>【京城股份：天海工业车载液氢瓶国内首次通过全套液氢介质试验 我国车载液氢技术获重大突破】记者...</td>
-      <td>2024-11-05 10:19:15</td>
-      <td>https://finance.eastmoney.com/a/20241105322929...</td>
+      <td>CPO概念股震荡走强 剑桥科技2连板</td>
+      <td>CPO概念股震荡走强，剑桥科技2连板，意华股份、太辰光、震有科技涨超5%，光迅科技、天孚通信...</td>
+      <td>2024-11-04 09:36:24</td>
+      <td>https://finance.eastmoney.com/a/20241104322768...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>创业板指涨幅扩大至4% 航天航空、券商、多元金融板块领涨</td>
-      <td>【行情】创业板指涨幅扩大至4%，航天航空、券商、多元金融板块领涨。</td>
-      <td>2024-11-05 10:16:32</td>
-      <td>https://finance.eastmoney.com/a/20241105322928...</td>
+      <td>创业板指涨幅扩大至1%</td>
+      <td>创业板指涨幅扩大至1%，上证指数跌0.06%，深证成指涨0.48%。</td>
+      <td>2024-11-04 09:35:41</td>
+      <td>https://finance.eastmoney.com/a/20241104322766...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>大幅领跑！金融科技再度爆发 赢时胜冲击涨停 金融科技ETF大涨7% 成交额快速突破2亿元</td>
-      <td>【大幅领跑！金融科技再度爆发 赢时胜冲击涨停 金融科技ETF大涨7% 成交额快速突破2亿元】...</td>
-      <td>2024-11-05 10:15:38</td>
-      <td>https://finance.eastmoney.com/a/20241105322928...</td>
+      <td>人形机器人概念异动拉升 横河精密等涨停</td>
+      <td>人形机器人概念异动拉升，横河精密、蓝黛科技、爱仕达涨停，中大力德、富临精工、昊志机电等快速走高。</td>
+      <td>2024-11-04 09:34:32</td>
+      <td>https://finance.eastmoney.com/a/20241104322766...</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>芯片国产替代加速 芯片ETF基金（159599）涨超3%</td>
-      <td>【芯片国产替代加速 芯片ETF基金（159599）涨超3%】11月5日，芯片ETF基金（15...</td>
-      <td>2024-11-05 10:14:09</td>
-      <td>https://finance.eastmoney.com/a/20241105322927...</td>
+      <td>智谱AI概念盘初走低 思美传媒逼近跌停</td>
+      <td>智谱AI概念盘初走低，思美传媒逼近跌停，中科金财、豆神教育、创意信息、创业黑马、首都在线等跟跌。</td>
+      <td>2024-11-04 09:33:02</td>
+      <td>https://finance.eastmoney.com/a/20241104322764...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>推动科技创新！科创100指数ETF强势涨超2%</td>
-      <td>【推动科技创新！科创100指数ETF强势涨超2%】科创100指数（000698）持续拉升超2...</td>
-      <td>2024-11-05 10:13:10</td>
-      <td>https://finance.eastmoney.com/a/20241105322927...</td>
+      <td>恒生科技指数涨幅扩大至1%</td>
+      <td>恒生科技指数涨幅扩大至1%。</td>
+      <td>2024-11-04 09:31:24</td>
+      <td>https://finance.eastmoney.com/a/20241104322764...</td>
     </tr>
     <tr>
       <th>...</th>
@@ -667,38 +748,38 @@ document.write(`
     </tr>
     <tr>
       <th>195</th>
-      <td>南非农业商会(Agbiz)称：南非本季小麦进口量将下降7%</td>
-      <td>南非农业商会(Agbiz)称，南非本季小麦进口量将下降7%。</td>
-      <td>2024-11-04 22:41:23</td>
-      <td>https://finance.eastmoney.com/a/20241104322854...</td>
+      <td>深圳规模最大棚改项目主体结构全面封顶</td>
+      <td>【深圳规模最大棚改项目主体结构全面封顶】由中建三局华南公司承建的深圳南华村棚改项目回迁区近日...</td>
+      <td>2024-11-03 12:24:47</td>
+      <td>https://finance.eastmoney.com/a/20241103322722...</td>
     </tr>
     <tr>
       <th>196</th>
-      <td>Constellation Energy下跌12%</td>
-      <td>Constellation Energy下跌12%，创该公司美国IPO以来最大盘中跌幅。</td>
-      <td>2024-11-04 22:37:58</td>
-      <td>https://finance.eastmoney.com/a/20241104322853...</td>
+      <td>中国汽车流通协会：9月进口汽车库存深度升至7.5个月 创新高</td>
+      <td>【中国汽车流通协会：9月进口汽车库存深度升至7.5个月 创新高】11月3日，中国汽车流通协会...</td>
+      <td>2024-11-03 11:59:34</td>
+      <td>https://finance.eastmoney.com/a/20241103322722...</td>
     </tr>
     <tr>
       <th>197</th>
-      <td>超微电脑股价下跌8%</td>
-      <td>超微电脑股价下跌8%，4天累计跌幅超过50%。</td>
-      <td>2024-11-04 22:37:10</td>
-      <td>https://finance.eastmoney.com/a/20241104322853...</td>
+      <td>公安部：机动车行驶证电子化11月4日起分三批推广应用</td>
+      <td>【公安部：机动车行驶证电子化11月4日起分三批推广应用】公安部部署自11月4日至12月2日在...</td>
+      <td>2024-11-03 11:48:31</td>
+      <td>https://finance.eastmoney.com/a/20241103322722...</td>
     </tr>
     <tr>
       <th>198</th>
-      <td>特朗普传媒科技集团股价上涨5%</td>
-      <td>特朗普传媒科技集团股价上涨5%，抹去盘前跌幅。</td>
-      <td>2024-11-04 22:36:29</td>
-      <td>https://finance.eastmoney.com/a/20241104322853...</td>
+      <td>奇安信中标中海油8624万网络安全服务大单</td>
+      <td>【奇安信中标中海油8624万网络安全服务大单】奇安信集团近日在网络安全领域再传捷报，成功中标...</td>
+      <td>2024-11-03 11:46:58</td>
+      <td>https://finance.eastmoney.com/a/20241103322722...</td>
     </tr>
     <tr>
       <th>199</th>
-      <td>英伟达超越苹果重新成为全球市值最高的公司</td>
-      <td>【英伟达超越苹果重新成为全球市值最高的公司】英伟达涨1.4%，总市值达3.37万亿美元，超越...</td>
-      <td>2024-11-04 22:32:52</td>
-      <td>https://finance.eastmoney.com/a/20241104322853...</td>
+      <td>北京全面启动房地一体宅基地确权登记 农民将拿到“大红本”</td>
+      <td>【北京全面启动房地一体宅基地确权登记 农民将拿到“大红本”】《北京市房地一体宅基地确权登记工...</td>
+      <td>2024-11-03 11:15:46</td>
+      <td>https://finance.eastmoney.com/a/20241103322722...</td>
     </tr>
   </tbody>
 </table>
@@ -742,103 +823,103 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>2024-11-05 10:22:32</td>
-      <td>特朗普：我们将解雇哈里斯，拯救美国。我们将削减税收，降低通货膨胀，削减价格，提高薪资，并将成...</td>
+      <td>2024-11-04 09:40:31</td>
+      <td>【蓝色光标、小红书等投资成立创投合伙企业】 企查查APP显示，近日，舟山变量源流创业投资合伙...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2024-11-05 10:21:57</td>
-      <td>【半导体板块持续反弹 中芯国际涨近10%】晶丰明源涨超10%，中芯国际、国民技术涨近10%，...</td>
+      <td>2024-11-04 09:40:24</td>
+      <td>【钧达股份：预计未来海外销售占比将进一步得到提升】 钧达股份11月1日在业绩说明会上表示，2...</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2024-11-05 10:20:38</td>
-      <td>港股苹果概念股走高，高伟电子(01415.HK)涨6%，丘钛科技(01478.HK)涨3.7...</td>
+      <td>2024-11-04 09:40:07</td>
+      <td>恒指转跌，恒生科技指数涨幅缩窄至0.5%。</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2024-11-05 10:18:09</td>
-      <td>赛力斯成交额达100亿元，现涨6.97%。</td>
+      <td>2024-11-04 09:39:12</td>
+      <td>【永兴材料、天力锂能等在江西投资成立电池公司】 企查查APP显示，近日，宇恒永兴电池（江西）...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2024-11-05 10:17:30</td>
-      <td>恒指涨幅扩大至1%，恒生科技指数涨1.6%，此前一度跌超1%。</td>
+      <td>2024-11-04 09:38:22</td>
+      <td>【以岭药业投资成立中药材公司】 企查查APP显示，近日，承德仟药兴中药材有限公司成立，法定代...</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>2024-11-05 10:17:14</td>
-      <td>【特斯拉针对置换购车用户推出抽奖促销活动】11月5日，特斯拉宣布，即日起至12月3日，通过特...</td>
+      <td>2024-11-04 09:38:07</td>
+      <td>创业板指涨幅迅速扩大至2%，深证成指涨1.2%，沪指涨0.1%。</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>2024-11-05 10:16:45</td>
-      <td>常山北明成交额达100亿元，现跌2.95%。</td>
+      <td>2024-11-04 09:37:39</td>
+      <td>深证成指日内涨幅达1%。</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>2024-11-05 10:16:30</td>
-      <td>创业板指涨4%，深证成指涨2.2%，沪指涨1.26%，互联网金融板块异动拉升，古鳌科技、赢时...</td>
+      <td>2024-11-04 09:37:03</td>
+      <td>【CPO概念股震荡走强 剑桥科技2连板】剑桥科技2连板，意华股份、太辰光、震有科技涨超5%，...</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>2024-11-05 10:15:32</td>
-      <td>哈里斯：让我们努力建立社区和联盟，我们希望提醒大家，我们之间的共同点远远超过分歧。</td>
+      <td>2024-11-04 09:36:46</td>
+      <td>北证50指数盘初涨超3%。</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>2024-11-05 10:15:17</td>
-      <td>银行间现券走势分化，3年期“24附息国债16”收益率下行0.75bp报1.525%，10年期...</td>
+      <td>2024-11-04 09:36:02</td>
+      <td>【减速器概念开盘拉升 横河精密等多股涨停】 减速器概念开盘拉升，截至发稿，旺成科技、横河精密...</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>2024-11-05 10:14:36</td>
-      <td>富时中国A50指数期货持续拉升现涨1%。</td>
+      <td>2024-11-04 09:35:50</td>
+      <td>汽车整车股盘初拉升，赛力斯触及涨停，股价续创历史新高，众泰汽车封板，北汽蓝谷、江淮汽车、中通...</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>2024-11-05 10:14:25</td>
-      <td>【京城股份：天海工业车载液氢瓶国内首次通过全套液氢介质试验 我国车载液氢技术获重大突破】 e...</td>
+      <td>2024-11-04 09:35:41</td>
+      <td>港股汽车股走高，小鹏汽车(09868.HK)涨5%，华晨中国(01114.HK)、吉利汽车(...</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>2024-11-05 10:14:21</td>
-      <td>日本橡胶期货下跌，日元走强，美国大选的不确定性加重。</td>
+      <td>2024-11-04 09:35:34</td>
+      <td>【低空经济概念震荡走低 宗申动力跌停】 低空经济概念震荡走低，宗申动力、上工申贝、恒天海龙跌...</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>2024-11-05 10:14:11</td>
-      <td>【梁建章：生育政策超预期 需进一步落实】 据第一财经消息，携程集团联合创始人梁建章在接受采访...</td>
+      <td>2024-11-04 09:35:10</td>
+      <td>创业板指低开高走，日内涨1%，深证成指涨0.58%，沪指跌0.08%。</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>2024-11-05 10:14:02</td>
-      <td>【金融科技股持续走高 赢时胜4天3板】受券商股大涨带动，金融科技概念股持续走高，赢时胜4天3...</td>
+      <td>2024-11-04 09:34:26</td>
+      <td>【奢侈品巨头LVMH旗下路威凯腾等在广州成立消费股权基金 出资额9.4亿】天眼查App显示，...</td>
     </tr>
     <tr>
       <th>15</th>
-      <td>2024-11-05 10:13:13</td>
-      <td>【美媒：为确保美国大选安全，美当局采取紧急安保计划】据美国《华盛顿邮报》网站11月3日报道，...</td>
+      <td>2024-11-04 09:33:46</td>
+      <td>【印尼计划延长出口商保留收益的最短期限】印尼经济统筹部长艾尔朗加·哈尔塔托（Airlangg...</td>
     </tr>
     <tr>
       <th>16</th>
-      <td>2024-11-05 10:13:06</td>
-      <td>集运指数（欧线）主力合约日内涨幅达10.00%，现报3132.2点。</td>
+      <td>2024-11-04 09:33:11</td>
+      <td>人形机器人概念异动拉升，横河精密、蓝黛科技、爱仕达涨停，中大力德、富临精工、昊志机电等快速走高。</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>2024-11-05 10:12:11</td>
-      <td>美国民主党总统候选人哈里斯：是时候在美国迎来新一代的领导层了。我准备好以美国下任总统的身份提...</td>
+      <td>2024-11-04 09:32:59</td>
+      <td>富时中国A50指数期货转跌。</td>
     </tr>
     <tr>
       <th>18</th>
-      <td>2024-11-05 10:11:54</td>
-      <td>港股芯片股走强，中芯国际(00981.HK)、晶门半导体(02878.HK)涨超5%，宏光半...</td>
+      <td>2024-11-04 09:31:59</td>
+      <td>中证转债指数开盘涨0.06%。阳谷转债、华康转债、豪能转债、大参转债、中旗转债涨幅居前，分别...</td>
     </tr>
     <tr>
       <th>19</th>
-      <td>2024-11-05 10:11:39</td>
-      <td>【苹果产业链震荡拉升 东山精密涨停】东山精密、奥拓电子涨停，哈森股份、闻泰科技、田中精机、领...</td>
+      <td>2024-11-04 09:31:29</td>
+      <td>国债期货早盘开盘，2年期国债期货（TS）主力合约涨0.01%，5年期国债期货（TF）主力合约...</td>
     </tr>
   </tbody>
 </table>
@@ -942,6 +1023,15 @@ document.write(`
       <td>...</td>
     </tr>
     <tr>
+      <th>2753</th>
+      <td>2024-10-28</td>
+      <td>20592.740</td>
+      <td>20669.410</td>
+      <td>20428.940</td>
+      <td>20599.359</td>
+      <td>1.626292e+10</td>
+    </tr>
+    <tr>
       <th>2754</th>
       <td>2024-10-29</td>
       <td>20729.980</td>
@@ -977,18 +1067,9 @@ document.write(`
       <td>20506.430</td>
       <td>1.389824e+10</td>
     </tr>
-    <tr>
-      <th>2758</th>
-      <td>2024-11-04</td>
-      <td>20584.450</td>
-      <td>20633.580</td>
-      <td>20446.260</td>
-      <td>20567.520</td>
-      <td>1.238359e+10</td>
-    </tr>
   </tbody>
 </table>
-<p>2759 rows × 6 columns</p>
+<p>2758 rows × 6 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1019,7 +1100,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a0ea9a3bc5afafe9985d39d84e8a5f6b9f0a77dfe15ebb7ddfc3d13f14216d35.png" src="../_images/a0ea9a3bc5afafe9985d39d84e8a5f6b9f0a77dfe15ebb7ddfc3d13f14216d35.png" />
+<img alt="../_images/f1a8b336b0fc6a3b4cded5883ae24be5f02c8c64d97d2eb844cfce83cba8fc9f.png" src="../_images/f1a8b336b0fc6a3b4cded5883ae24be5f02c8c64d97d2eb844cfce83cba8fc9f.png" />
 </div>
 </div>
 </section>
@@ -1115,6 +1196,15 @@ document.write(`
       <td>...</td>
     </tr>
     <tr>
+      <th>5242</th>
+      <td>2024-10-28</td>
+      <td>42264.5391</td>
+      <td>42476.4609</td>
+      <td>42264.5391</td>
+      <td>42387.5703</td>
+      <td>284779780.0</td>
+    </tr>
+    <tr>
       <th>5243</th>
       <td>2024-10-29</td>
       <td>42323.4805</td>
@@ -1150,18 +1240,9 @@ document.write(`
       <td>42052.1914</td>
       <td>531359667.0</td>
     </tr>
-    <tr>
-      <th>5247</th>
-      <td>2024-11-04</td>
-      <td>42004.6602</td>
-      <td>42035.8711</td>
-      <td>41647.3008</td>
-      <td>41794.6016</td>
-      <td>341507920.0</td>
-    </tr>
   </tbody>
 </table>
-<p>5248 rows × 6 columns</p>
+<p>5247 rows × 6 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1171,7 +1252,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6f3d4d33befc65331269ad7dc81216b61cc98be4b6d6add7cfb7c3357b8365b4.png" src="../_images/6f3d4d33befc65331269ad7dc81216b61cc98be4b6d6add7cfb7c3357b8365b4.png" />
+<img alt="../_images/77d4e75a0ade15a370c989d93939aead9b532657ed3bc74dd95f934133aab6b9.png" src="../_images/77d4e75a0ade15a370c989d93939aead9b532657ed3bc74dd95f934133aab6b9.png" />
 </div>
 </div>
 </section>
@@ -1267,6 +1348,15 @@ document.write(`
       <td>...</td>
     </tr>
     <tr>
+      <th>5240</th>
+      <td>2024-10-28</td>
+      <td>18648.2520</td>
+      <td>18671.0078</td>
+      <td>18563.0234</td>
+      <td>18567.1895</td>
+      <td>4.974542e+09</td>
+    </tr>
+    <tr>
       <th>5241</th>
       <td>2024-10-29</td>
       <td>18576.0879</td>
@@ -1302,18 +1392,9 @@ document.write(`
       <td>18239.9180</td>
       <td>5.089374e+09</td>
     </tr>
-    <tr>
-      <th>5245</th>
-      <td>2024-11-04</td>
-      <td>18220.4258</td>
-      <td>18308.3008</td>
-      <td>18112.8301</td>
-      <td>18179.9844</td>
-      <td>4.758359e+09</td>
-    </tr>
   </tbody>
 </table>
-<p>5246 rows × 6 columns</p>
+<p>5245 rows × 6 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1323,7 +1404,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8963ca0f06d005cd9371a68d9472fd0a34995c25e61331a30bde3fa37ded71db.png" src="../_images/8963ca0f06d005cd9371a68d9472fd0a34995c25e61331a30bde3fa37ded71db.png" />
+<img alt="../_images/f31a5c64e790c21944c27a30fbfee0e04c1d2c4fea83fc20af6d666c59322a2f.png" src="../_images/f31a5c64e790c21944c27a30fbfee0e04c1d2c4fea83fc20af6d666c59322a2f.png" />
 </div>
 </div>
 </section>
@@ -1436,6 +1517,17 @@ document.write(`
       <td>...</td>
     </tr>
     <tr>
+      <th>3783</th>
+      <td>2024-10-28</td>
+      <td>3380.0</td>
+      <td>3479.0</td>
+      <td>3372.0</td>
+      <td>3451.0</td>
+      <td>2997381</td>
+      <td>1778152</td>
+      <td>3437.0</td>
+    </tr>
+    <tr>
       <th>3784</th>
       <td>2024-10-29</td>
       <td>3450.0</td>
@@ -1479,20 +1571,9 @@ document.write(`
       <td>1706790</td>
       <td>3400.0</td>
     </tr>
-    <tr>
-      <th>3788</th>
-      <td>2024-11-04</td>
-      <td>3403.0</td>
-      <td>3483.0</td>
-      <td>3344.0</td>
-      <td>3425.0</td>
-      <td>3213882</td>
-      <td>1701525</td>
-      <td>3389.0</td>
-    </tr>
   </tbody>
 </table>
-<p>3789 rows × 8 columns</p>
+<p>3788 rows × 8 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1502,7 +1583,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/beaa9b49514d0c9371ac241785563ded205fb806bc746632527a9b31d3d7814b.png" src="../_images/beaa9b49514d0c9371ac241785563ded205fb806bc746632527a9b31d3d7814b.png" />
+<img alt="../_images/e9c553eb3ddd7c02aad18c50bc60ab6d32aa53647220141a927de023c84f395e.png" src="../_images/e9c553eb3ddd7c02aad18c50bc60ab6d32aa53647220141a927de023c84f395e.png" />
 </div>
 </div>
 </section>
@@ -1621,21 +1702,21 @@ document.write(`
     <tr>
       <th>3</th>
       <td>4</td>
-      <td>002094</td>
-      <td>青岛金王</td>
-      <td>10.010650</td>
-      <td>10.33</td>
-      <td>3477264032</td>
-      <td>7.132385e+09</td>
-      <td>7.136972e+09</td>
-      <td>49.543911</td>
-      <td>42751727</td>
+      <td>000536</td>
+      <td>华映科技</td>
+      <td>9.927798</td>
+      <td>6.09</td>
+      <td>4691917312</td>
+      <td>1.682717e+10</td>
+      <td>1.684514e+10</td>
+      <td>28.261665</td>
+      <td>53313382</td>
       <td>092500</td>
-      <td>142639</td>
-      <td>18</td>
-      <td>16/13</td>
+      <td>141542</td>
+      <td>30</td>
+      <td>6/6</td>
       <td>6</td>
-      <td>美容护理</td>
+      <td>光学光电</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1822,63 +1903,63 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>装修装饰</td>
-      <td>002047</td>
-      <td>宝鹰股份</td>
-      <td>9.964413</td>
+      <td>电力行业</td>
+      <td>000958</td>
+      <td>电投产融</td>
+      <td>10.031024</td>
       <td>092500</td>
-      <td>092500</td>
-      <td>0</td>
-      <td>5/4</td>
-      <td>3</td>
+      <td>135648</td>
+      <td>13</td>
+      <td>10/10</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>化学制品</td>
-      <td>002453</td>
-      <td>华软科技</td>
-      <td>10.030864</td>
+      <td>家电行业</td>
+      <td>000016</td>
+      <td>深康佳Ａ</td>
+      <td>9.943182</td>
       <td>092500</td>
-      <td>092500</td>
-      <td>0</td>
-      <td>3/3</td>
-      <td>3</td>
+      <td>100900</td>
+      <td>7</td>
+      <td>19/11</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>小金属</td>
-      <td>000795</td>
-      <td>英洛华</td>
-      <td>10.026738</td>
+      <td>工程建设</td>
+      <td>002542</td>
+      <td>中化岩土</td>
+      <td>9.905661</td>
       <td>092500</td>
-      <td>092500</td>
-      <td>0</td>
-      <td>2/2</td>
-      <td>2</td>
+      <td>141230</td>
+      <td>7</td>
+      <td>13/11</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>橡胶制品</td>
-      <td>300121</td>
-      <td>阳谷华泰</td>
-      <td>19.966860</td>
+      <td>光学光电</td>
+      <td>000536</td>
+      <td>华映科技</td>
+      <td>9.927798</td>
       <td>092500</td>
-      <td>092500</td>
-      <td>0</td>
-      <td>1/1</td>
-      <td>1</td>
+      <td>141542</td>
+      <td>30</td>
+      <td>6/6</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>纺织服装</td>
-      <td>603196</td>
-      <td>日播时尚</td>
-      <td>10.017271</td>
+      <td>文化传媒</td>
+      <td>000917</td>
+      <td>电广传媒</td>
+      <td>9.990108</td>
       <td>092500</td>
-      <td>092500</td>
-      <td>0</td>
-      <td>5/3</td>
-      <td>1</td>
+      <td>143836</td>
+      <td>20</td>
+      <td>6/6</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2856,8 +2937,8 @@ document.write(`
 0  300503  昊志机电  10.25  259997204.2  6.30   50.69  4.61
 1  688160  步科股份  10.16   49950686.0  1.28   92.43  5.25
 2  603662  柯力传感  10.01  247995758.0  2.45   40.57  3.96
-3    2896  中大力德   9.99  233675695.0  4.86   64.66  4.24
-4     795   英洛华   9.96   68112110.0  0.66   37.27  3.81
+3  002896  中大力德   9.99  233675695.0  4.86   64.66  4.24
+4  000795   英洛华   9.96   68112110.0  0.66   37.27  3.81
 
 
 板块：麒麟电池:
@@ -2874,17 +2955,17 @@ document.write(`
 0  300539  横河精密  20.02  6.934375e+07  3.31   84.09  4.96
 1  300432  富临精工  18.68  6.102258e+08  3.52   44.95  4.29
 2  836720  吉冈精密  11.53  5.447675e+07  6.69   54.03  6.87
-3    2765  蓝黛科技  10.01  5.011734e+07  0.99   39.93  2.23
-4    2897  意华股份  10.01  4.121599e+08  5.31   27.41  3.34
+3  002765  蓝黛科技  10.01  5.011734e+07  0.99   39.93  2.23
+4  002897  意华股份  10.01  4.121599e+08  5.31   27.41  3.34
 
 
 板块：轮毂电机:
        代码    名称   涨跌幅          成交额   换手率  市盈率-动态   市净率
 0  603489  八方股份  9.98  77634847.00  1.51   76.55  1.99
-1    2590  万安科技  4.77  94365642.74  1.44   38.22  2.66
+1  002590  万安科技  4.77  94365642.74  1.44   38.22  2.66
 2  603178  圣龙股份  4.26  57646427.00  1.11  574.92  4.13
 3  603982  泉峰汽车  3.11  10874601.00  0.49   -4.45  1.27
-4    2284  亚太股份  3.08  42984345.00  0.74   28.34  2.07
+4  002284  亚太股份  3.08  42984345.00  0.74   28.34  2.07
 </pre></div>
 </div>
 </div>
@@ -3221,9 +3302,9 @@ document.write(`
 2     893  亚钾国际  1.37    1686300.0  0.01   25.88  1.53
 3     408  藏格矿业  0.96    1529803.0  0.00   18.78  3.54
 4    2274  华昌化工  0.66     642600.0  0.01   10.31  1.27
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>板块：航运港口:
+
+
+板块：航运港口:
        代码     名称   涨跌幅         成交额   换手率  市盈率-动态   市净率
 0  900952  ST锦港Ｂ  5.31     2808.00  0.01   -0.59  0.36
 1  600190   ST锦港  5.19  3009667.00  0.10   -1.14  0.71
@@ -3534,7 +3615,7 @@ document.write(`
 板块：电机:
        代码    名称    涨跌幅           成交额   换手率  市盈率-动态   市净率
 0  873593  鼎智科技  29.83  2.230792e+08  6.51  102.08  6.33
-1    2892   科力尔   9.98  1.337484e+08  2.47   89.94  6.48
+1  002892   科力尔   9.98  1.337484e+08  2.47   89.94  6.48
 2  603489  八方股份   9.98  7.763485e+07  1.51   76.55  1.99
 3  300660  江苏雷利   9.61  1.567948e+08  1.65   30.39  2.89
 4  603728  鸣志电器   7.95  3.038527e+08  1.50  326.57  7.15
@@ -3542,10 +3623,10 @@ document.write(`
 
 板块：汽车整车:
        代码    名称    涨跌幅           成交额   换手率  市盈率-动态    市净率
-0     980  众泰汽车  10.22  2.527209e+08  2.17  -28.77  10.66
+0  000980  众泰汽车  10.22  2.527209e+08  2.17  -28.77  10.66
 1  601127   赛力斯   8.61  4.828225e+09  2.59   34.70  13.85
 2  600733  北汽蓝谷   6.97  1.192676e+09  2.99   -7.72  25.71
-3     957  中通客车   4.66  1.772447e+08  2.67   25.60   2.30
+3  000957  中通客车   4.66  1.772447e+08  2.67   25.60   2.30
 4  600418  江淮汽车   4.52  1.656286e+09  1.94  102.98   6.25
 
 
@@ -3556,9 +3637,9 @@ document.write(`
 2  832000  安徽凤凰  13.25  9.557412e+07  8.09   33.98  4.01
 3  603201  常润股份  10.01  8.426726e+07  6.72   15.49  2.04
 4  603809  豪能股份   9.98  7.197579e+08  9.46   23.70  3.20
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>板块：通用设备:
+
+
+板块：通用设备:
        代码    名称    涨跌幅           成交额    换手率  市盈率-动态    市净率
 0  830896  旺成科技  29.93  8.869519e+07  14.80   47.28   3.41
 1  301596  瑞迪智驱  20.00  3.592346e+08  25.16   60.25   7.34
@@ -3570,7 +3651,7 @@ document.write(`
 板块：风电设备:
        代码    名称    涨跌幅           成交额   换手率  市盈率-动态   市净率
 0  688660  电气风电  20.04  3.801847e+08  4.37  -13.83  1.63
-1    2531  天顺风能   5.63  2.164646e+08  1.27   44.22  1.90
+1  002531  天顺风能   5.63  2.164646e+08  1.27   44.22  1.90
 2  603063  禾望电气   3.79  1.946624e+08  2.25   26.56  2.19
 3  301155  海力风电   3.15  6.194172e+07  1.00  128.03  2.71
 4  300772  运达股份   3.13  4.501269e+07  0.48   26.65  1.73
@@ -4780,7 +4861,7 @@ document.write(`
     </tr>
     <tr>
       <th>22</th>
-      <td>980</td>
+      <td>000980</td>
       <td>众泰汽车</td>
       <td>10.22</td>
       <td>5.03</td>
@@ -4840,7 +4921,7 @@ document.write(`
     </tr>
     <tr>
       <th>26</th>
-      <td>415</td>
+      <td>000415</td>
       <td>渤海租赁</td>
       <td>10.11</td>
       <td>3.65</td>
@@ -4870,7 +4951,7 @@ document.write(`
     </tr>
     <tr>
       <th>28</th>
-      <td>3016</td>
+      <td>003016</td>
       <td>欣贺股份</td>
       <td>10.07</td>
       <td>13.75</td>
@@ -4885,7 +4966,7 @@ document.write(`
     </tr>
     <tr>
       <th>29</th>
-      <td>2887</td>
+      <td>002887</td>
       <td>绿茵生态</td>
       <td>10.07</td>
       <td>28.82</td>
@@ -4900,7 +4981,7 @@ document.write(`
     </tr>
     <tr>
       <th>30</th>
-      <td>520</td>
+      <td>000520</td>
       <td>凤凰航运</td>
       <td>10.05</td>
       <td>11.43</td>
@@ -4915,7 +4996,7 @@ document.write(`
     </tr>
     <tr>
       <th>34</th>
-      <td>2747</td>
+      <td>002747</td>
       <td>埃斯顿</td>
       <td>10.03</td>
       <td>19.19</td>
@@ -4930,7 +5011,7 @@ document.write(`
     </tr>
     <tr>
       <th>35</th>
-      <td>2403</td>
+      <td>002403</td>
       <td>爱仕达</td>
       <td>10.03</td>
       <td>6.36</td>
@@ -4960,7 +5041,7 @@ document.write(`
     </tr>
     <tr>
       <th>33</th>
-      <td>2824</td>
+      <td>002824</td>
       <td>和胜股份</td>
       <td>10.03</td>
       <td>4.62</td>
@@ -4975,7 +5056,7 @@ document.write(`
     </tr>
     <tr>
       <th>32</th>
-      <td>3010</td>
+      <td>003010</td>
       <td>若羽臣</td>
       <td>10.03</td>
       <td>22.39</td>
@@ -5020,7 +5101,7 @@ document.write(`
     </tr>
     <tr>
       <th>43</th>
-      <td>2897</td>
+      <td>002897</td>
       <td>意华股份</td>
       <td>10.01</td>
       <td>11.22</td>
@@ -5065,7 +5146,7 @@ document.write(`
     </tr>
     <tr>
       <th>40</th>
-      <td>2416</td>
+      <td>002416</td>
       <td>爱施德</td>
       <td>10.01</td>
       <td>1.23</td>
@@ -5110,7 +5191,7 @@ document.write(`
     </tr>
     <tr>
       <th>39</th>
-      <td>2765</td>
+      <td>002765</td>
       <td>蓝黛科技</td>
       <td>10.01</td>
       <td>1.49</td>
@@ -5125,7 +5206,7 @@ document.write(`
     </tr>
     <tr>
       <th>48</th>
-      <td>2031</td>
+      <td>002031</td>
       <td>巨轮智能</td>
       <td>10.00</td>
       <td>7.75</td>
@@ -5155,7 +5236,7 @@ document.write(`
     </tr>
     <tr>
       <th>49</th>
-      <td>1306</td>
+      <td>001306</td>
       <td>夏厦精密</td>
       <td>10.00</td>
       <td>15.25</td>
@@ -5240,60 +5321,79 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/models.py:971,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">970</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">971</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">972</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
-<span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/simplejson/__init__.py:514,</span> in <span class="ni">loads</span><span class="nt">(s, encoding, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, use_decimal, allow_nan, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">510</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">encoding</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">511</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">513</span>         <span class="ow">and</span> <span class="ow">not</span> <span class="n">use_decimal</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">allow_nan</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">514</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/simplejson/decoder.py:386,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w, _PY3)</span>
-<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="n">s</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoding</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">386</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">387</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/simplejson/decoder.py:416,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx, _w, _PY3)</span>
-<span class="g g-Whitespace">    </span><span class="mi">415</span>         <span class="n">idx</span> <span class="o">+=</span> <span class="mi">3</span>
-<span class="ne">--&gt; </span><span class="mi">416</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">scan_once</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
-
-<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">31</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">syclestart</span><span class="o">=</span><span class="s1">&#39;20240925&#39;</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ak</span><span class="o">.</span><span class="n">stock_zt_pool_strong_em</span><span class="p">(</span><span class="n">date</span><span class="o">=</span><span class="n">syclestart</span><span class="p">)</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_ztb_em.py:205,</span> in <span class="ni">stock_zt_pool_strong_em</span><span class="nt">(date)</span>
-<span class="g g-Whitespace">    </span><span class="mi">195</span> <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">    </span><span class="mi">196</span>     <span class="s2">&quot;ut&quot;</span><span class="p">:</span> <span class="s2">&quot;7eea3edcaed734bea9cbfc24409ed989&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">197</span>     <span class="s2">&quot;dpt&quot;</span><span class="p">:</span> <span class="s2">&quot;wz.ztzt&quot;</span><span class="p">,</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_ztb_em.py:211,</span> in <span class="ni">stock_zt_pool_strong_em</span><span class="nt">(date)</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span> <span class="n">temp_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span> <span class="n">temp_df</span><span class="p">[</span><span class="s2">&quot;index&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">temp_df</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">211</span> <span class="n">temp_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span>     <span class="s2">&quot;序号&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span>     <span class="s2">&quot;代码&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span>     <span class="s2">&quot;_&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="s2">&quot;名称&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="s2">&quot;最新价&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span>     <span class="s2">&quot;涨停价&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span>     <span class="s2">&quot;_&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>     <span class="s2">&quot;涨跌幅&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>     <span class="s2">&quot;成交额&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>     <span class="s2">&quot;流通市值&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="s2">&quot;总市值&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="s2">&quot;换手率&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="s2">&quot;是否新高&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span>     <span class="s2">&quot;入选理由&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="s2">&quot;量比&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span>     <span class="s2">&quot;涨速&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span>     <span class="s2">&quot;涨停统计&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">229</span>     <span class="s2">&quot;所属行业&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span> <span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span> <span class="n">temp_df</span><span class="p">[</span><span class="s2">&quot;涨停统计&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span>     <span class="n">temp_df</span><span class="p">[</span><span class="s2">&quot;涨停统计&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="s2">&quot;days&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="o">+</span> <span class="n">temp_df</span><span class="p">[</span><span class="s2">&quot;涨停统计&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="s2">&quot;ct&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span> <span class="n">temp_df</span> <span class="o">=</span> <span class="n">temp_df</span><span class="p">[</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="p">[</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span>         <span class="s2">&quot;序号&quot;</span><span class="p">,</span>
    <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="s2">&quot;_&quot;</span><span class="p">:</span> <span class="s2">&quot;1621590489736&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">203</span> <span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">204</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">205</span> <span class="n">data_json</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">206</span> <span class="k">if</span> <span class="n">data_json</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">207</span>     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span>     <span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span> <span class="p">]</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/requests/models.py:975,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">971</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">972</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
-<span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
-<span class="ne">--&gt; </span><span class="mi">975</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/pandas/core/generic.py:6310,</span> in <span class="ni">NDFrame.__setattr__</span><span class="nt">(self, name, value)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6308</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6309</span>     <span class="nb">object</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">6310</span>     <span class="k">return</span> <span class="nb">object</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6311</span> <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6312</span>     <span class="k">pass</span>
 
-<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
+<span class="nn">File properties.pyx:69,</span> in <span class="ni">pandas._libs.properties.AxisProperty.__set__</span><span class="nt">()</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/pandas/core/generic.py:813,</span> in <span class="ni">NDFrame._set_axis</span><span class="nt">(self, axis, labels)</span>
+<span class="g g-Whitespace">    </span><span class="mi">808</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">809</span><span class="sd"> This is called from the cython code when we set the `index` attribute</span>
+<span class="g g-Whitespace">    </span><span class="mi">810</span><span class="sd"> directly, e.g. `series.index = [1, 2, 3]`.</span>
+<span class="g g-Whitespace">    </span><span class="mi">811</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">812</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ensure_index</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">813</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mgr</span><span class="o">.</span><span class="n">set_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">814</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clear_item_cache</span><span class="p">()</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/pandas/core/internals/managers.py:238,</span> in <span class="ni">BaseBlockManager.set_axis</span><span class="nt">(self, axis, new_labels)</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span> <span class="k">def</span> <span class="nf">set_axis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">axis</span><span class="p">:</span> <span class="n">AxisInt</span><span class="p">,</span> <span class="n">new_labels</span><span class="p">:</span> <span class="n">Index</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="c1"># Caller is responsible for ensuring we have an Index object.</span>
+<span class="ne">--&gt; </span><span class="mi">238</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_validate_set_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">new_labels</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span>     <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_labels</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/pandas/core/internals/base.py:98,</span> in <span class="ni">DataManager._validate_set_axis</span><span class="nt">(self, axis, new_labels)</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="k">pass</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span> <span class="k">elif</span> <span class="n">new_len</span> <span class="o">!=</span> <span class="n">old_len</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">98</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">99</span>         <span class="sa">f</span><span class="s2">&quot;Length mismatch: Expected axis has </span><span class="si">{</span><span class="n">old_len</span><span class="si">}</span><span class="s2"> elements, new &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span>         <span class="sa">f</span><span class="s2">&quot;values have </span><span class="si">{</span><span class="n">new_len</span><span class="si">}</span><span class="s2"> elements&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span>     <span class="p">)</span>
+
+<span class="ne">ValueError</span>: Length mismatch: Expected axis has 1 elements, new values have 18 elements
 </pre></div>
 </div>
 </div>
