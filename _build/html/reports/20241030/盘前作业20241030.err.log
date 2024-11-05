@@ -1,4 +1,17 @@
 Traceback (most recent call last):
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 778, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 189, in ensure_async
+    result = await obj
+             ^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_client/channels.py", line 230, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
   File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
@@ -12,86 +25,20 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^
   File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-#返回当日涨停股票DataFrame
-def limitupList(date):
-    collist=['所属行业','代码','名称','涨跌幅','首次封板时间','最后封板时间','炸板次数','涨停统计','连板数']
-    stock_zt_pool_em_df = ak.stock_zt_pool_em(date=date)
-    last_hs_10=stock_zt_pool_em_df[collist]
-    return last_hs_10
-
-last_hs_10=limitupList(lastday)
-last_hs_10
-------------------
-
-
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mJSONDecodeError[0m                           Traceback (most recent call last)
-File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/models.py:971[0m, in [0;36mResponse.json[0;34m(self, **kwargs)[0m
-[1;32m    970[0m [38;5;28;01mtry[39;00m:
-[0;32m--> 971[0m     [38;5;28;01mreturn[39;00m complexjson[38;5;241m.[39mloads([38;5;28mself[39m[38;5;241m.[39mtext, [38;5;241m*[39m[38;5;241m*[39mkwargs)
-[1;32m    972[0m [38;5;28;01mexcept[39;00m JSONDecodeError [38;5;28;01mas[39;00m e:
-[1;32m    973[0m     [38;5;66;03m# Catch JSON-related errors and raise as requests.JSONDecodeError[39;00m
-[1;32m    974[0m     [38;5;66;03m# This aliases json.JSONDecodeError and simplejson.JSONDecodeError[39;00m
-
-File [0;32m~/anaconda3/lib/python3.11/site-packages/simplejson/__init__.py:514[0m, in [0;36mloads[0;34m(s, encoding, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, use_decimal, allow_nan, **kw)[0m
-[1;32m    510[0m [38;5;28;01mif[39;00m ([38;5;28mcls[39m [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m encoding [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m object_hook [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m
-[1;32m    511[0m         parse_int [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m parse_float [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m
-[1;32m    512[0m         parse_constant [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m object_pairs_hook [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m
-[1;32m    513[0m         [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m use_decimal [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m allow_nan [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m kw):
-[0;32m--> 514[0m     [38;5;28;01mreturn[39;00m _default_decoder[38;5;241m.[39mdecode(s)
-[1;32m    515[0m [38;5;28;01mif[39;00m [38;5;28mcls[39m [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
-
-File [0;32m~/anaconda3/lib/python3.11/site-packages/simplejson/decoder.py:386[0m, in [0;36mJSONDecoder.decode[0;34m(self, s, _w, _PY3)[0m
-[1;32m    385[0m     s [38;5;241m=[39m [38;5;28mstr[39m(s, [38;5;28mself[39m[38;5;241m.[39mencoding)
-[0;32m--> 386[0m obj, end [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mraw_decode(s)
-[1;32m    387[0m end [38;5;241m=[39m _w(s, end)[38;5;241m.[39mend()
-
-File [0;32m~/anaconda3/lib/python3.11/site-packages/simplejson/decoder.py:416[0m, in [0;36mJSONDecoder.raw_decode[0;34m(self, s, idx, _w, _PY3)[0m
-[1;32m    415[0m         idx [38;5;241m+[39m[38;5;241m=[39m [38;5;241m3[39m
-[0;32m--> 416[0m [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mscan_once(s, idx[38;5;241m=[39m_w(s, idx)[38;5;241m.[39mend())
-
-[0;31mJSONDecodeError[0m: Expecting value: line 1 column 1 (char 0)
-
-During handling of the above exception, another exception occurred:
-
-[0;31mJSONDecodeError[0m                           Traceback (most recent call last)
-Cell [0;32mIn[12], line 8[0m
-[1;32m      5[0m     last_hs_10[38;5;241m=[39mstock_zt_pool_em_df[collist]
-[1;32m      6[0m     [38;5;28;01mreturn[39;00m last_hs_10
-[0;32m----> 8[0m last_hs_10[38;5;241m=[39mlimitupList(lastday)
-[1;32m      9[0m last_hs_10
-
-Cell [0;32mIn[12], line 4[0m, in [0;36mlimitupList[0;34m(date)[0m
-[1;32m      2[0m [38;5;28;01mdef[39;00m [38;5;21mlimitupList[39m(date):
-[1;32m      3[0m     collist[38;5;241m=[39m[[38;5;124m'[39m[38;5;124m所属行业[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m代码[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m名称[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m涨跌幅[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m首次封板时间[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m最后封板时间[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m炸板次数[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m涨停统计[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m连板数[39m[38;5;124m'[39m]
-[0;32m----> 4[0m     stock_zt_pool_em_df [38;5;241m=[39m ak[38;5;241m.[39mstock_zt_pool_em(date[38;5;241m=[39mdate)
-[1;32m      5[0m     last_hs_10[38;5;241m=[39mstock_zt_pool_em_df[collist]
-[1;32m      6[0m     [38;5;28;01mreturn[39;00m last_hs_10
-
-File [0;32m~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_ztb_em.py:44[0m, in [0;36mstock_zt_pool_em[0;34m(date)[0m
-[1;32m     34[0m params [38;5;241m=[39m {
-[1;32m     35[0m     [38;5;124m"[39m[38;5;124mut[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m7eea3edcaed734bea9cbfc24409ed989[39m[38;5;124m"[39m,
-[1;32m     36[0m     [38;5;124m"[39m[38;5;124mdpt[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124mwz.ztzt[39m[38;5;124m"[39m,
-[0;32m   (...)[0m
-[1;32m     41[0m     [38;5;124m"[39m[38;5;124m_[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m1621590489736[39m[38;5;124m"[39m,
-[1;32m     42[0m }
-[1;32m     43[0m r [38;5;241m=[39m requests[38;5;241m.[39mget(url, params[38;5;241m=[39mparams)
-[0;32m---> 44[0m data_json [38;5;241m=[39m r[38;5;241m.[39mjson()
-[1;32m     45[0m [38;5;28;01mif[39;00m data_json[[38;5;124m"[39m[38;5;124mdata[39m[38;5;124m"[39m] [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
-[1;32m     46[0m     [38;5;28;01mreturn[39;00m pd[38;5;241m.[39mDataFrame()
-
-File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/models.py:975[0m, in [0;36mResponse.json[0;34m(self, **kwargs)[0m
-[1;32m    971[0m     [38;5;28;01mreturn[39;00m complexjson[38;5;241m.[39mloads([38;5;28mself[39m[38;5;241m.[39mtext, [38;5;241m*[39m[38;5;241m*[39mkwargs)
-[1;32m    972[0m [38;5;28;01mexcept[39;00m JSONDecodeError [38;5;28;01mas[39;00m e:
-[1;32m    973[0m     [38;5;66;03m# Catch JSON-related errors and raise as requests.JSONDecodeError[39;00m
-[1;32m    974[0m     [38;5;66;03m# This aliases json.JSONDecodeError and simplejson.JSONDecodeError[39;00m
-[0;32m--> 975[0m     [38;5;28;01mraise[39;00m RequestsJSONDecodeError(e[38;5;241m.[39mmsg, e[38;5;241m.[39mdoc, e[38;5;241m.[39mpos)
-
-[0;31mJSONDecodeError[0m: Expecting value: line 1 column 1 (char 0)
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1001, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 802, in _async_poll_for_reply
+    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 852, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+news_sinagj = ak.stock_info_global_sina()
+news_sinagj['时间']=pd.to_datetime(news_sinagj['时间'])
+news_sinagj[news_sinagj['时间']>lastday]
+-------------------
 
