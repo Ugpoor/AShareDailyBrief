@@ -18,18 +18,111 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-stock_hk_daily_hfq_df = ak.stock_hk_daily(symbol="HSI", adjust="")
-stock_hk_daily_hfq_df
+stock_dji_daily_df = ak.stock_us_daily(symbol=".DJI", adjust="")
+stock_dji_daily_df
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mSSLError[0m                                  Traceback (most recent call last)
-[0;31mSSLError[0m: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)
+[0;31mConnectionResetError[0m                      Traceback (most recent call last)
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py:776[0m, in [0;36mHTTPConnectionPool.urlopen[0;34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)[0m
+[1;32m    775[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 776[0m     [38;5;28mself[39m[38;5;241m.[39m_prepare_proxy(conn)
+[1;32m    777[0m [38;5;28;01mexcept[39;00m (BaseSSLError, [38;5;167;01mOSError[39;00m, SocketTimeout) [38;5;28;01mas[39;00m e:
 
-The above exception was the direct cause of the following exception:
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py:1041[0m, in [0;36mHTTPSConnectionPool._prepare_proxy[0;34m(self, conn)[0m
+[1;32m   1035[0m conn[38;5;241m.[39mset_tunnel(
+[1;32m   1036[0m     scheme[38;5;241m=[39mtunnel_scheme,
+[1;32m   1037[0m     host[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39m_tunnel_host,
+[1;32m   1038[0m     port[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mport,
+[1;32m   1039[0m     headers[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mproxy_headers,
+[1;32m   1040[0m )
+[0;32m-> 1041[0m conn[38;5;241m.[39mconnect()
 
-[0;31mMaxRetryError[0m                             Traceback (most recent call last)
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/connection.py:635[0m, in [0;36mHTTPSConnection.connect[0;34m(self)[0m
+[1;32m    627[0m     warnings[38;5;241m.[39mwarn(
+[1;32m    628[0m         (
+[1;32m    629[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSystem time is way off (before [39m[38;5;132;01m{[39;00mRECENT_DATE[38;5;132;01m}[39;00m[38;5;124m). This will probably [39m[38;5;124m"[39m
+[0;32m   (...)[0m
+[1;32m    632[0m         SystemTimeWarning,
+[1;32m    633[0m     )
+[0;32m--> 635[0m sock_and_verified [38;5;241m=[39m _ssl_wrap_socket_and_match_hostname(
+[1;32m    636[0m     sock[38;5;241m=[39msock,
+[1;32m    637[0m     cert_reqs[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mcert_reqs,
+[1;32m    638[0m     ssl_version[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mssl_version,
+[1;32m    639[0m     ssl_minimum_version[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mssl_minimum_version,
+[1;32m    640[0m     ssl_maximum_version[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mssl_maximum_version,
+[1;32m    641[0m     ca_certs[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mca_certs,
+[1;32m    642[0m     ca_cert_dir[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mca_cert_dir,
+[1;32m    643[0m     ca_cert_data[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mca_cert_data,
+[1;32m    644[0m     cert_file[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mcert_file,
+[1;32m    645[0m     key_file[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mkey_file,
+[1;32m    646[0m     key_password[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mkey_password,
+[1;32m    647[0m     server_hostname[38;5;241m=[39mserver_hostname,
+[1;32m    648[0m     ssl_context[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mssl_context,
+[1;32m    649[0m     tls_in_tls[38;5;241m=[39mtls_in_tls,
+[1;32m    650[0m     assert_hostname[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39massert_hostname,
+[1;32m    651[0m     assert_fingerprint[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39massert_fingerprint,
+[1;32m    652[0m )
+[1;32m    653[0m [38;5;28mself[39m[38;5;241m.[39msock [38;5;241m=[39m sock_and_verified[38;5;241m.[39msocket
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/connection.py:776[0m, in [0;36m_ssl_wrap_socket_and_match_hostname[0;34m(sock, cert_reqs, ssl_version, ssl_minimum_version, ssl_maximum_version, cert_file, key_file, key_password, ca_certs, ca_cert_dir, ca_cert_data, assert_hostname, assert_fingerprint, server_hostname, ssl_context, tls_in_tls)[0m
+[1;32m    774[0m         server_hostname [38;5;241m=[39m normalized
+[0;32m--> 776[0m ssl_sock [38;5;241m=[39m ssl_wrap_socket(
+[1;32m    777[0m     sock[38;5;241m=[39msock,
+[1;32m    778[0m     keyfile[38;5;241m=[39mkey_file,
+[1;32m    779[0m     certfile[38;5;241m=[39mcert_file,
+[1;32m    780[0m     key_password[38;5;241m=[39mkey_password,
+[1;32m    781[0m     ca_certs[38;5;241m=[39mca_certs,
+[1;32m    782[0m     ca_cert_dir[38;5;241m=[39mca_cert_dir,
+[1;32m    783[0m     ca_cert_data[38;5;241m=[39mca_cert_data,
+[1;32m    784[0m     server_hostname[38;5;241m=[39mserver_hostname,
+[1;32m    785[0m     ssl_context[38;5;241m=[39mcontext,
+[1;32m    786[0m     tls_in_tls[38;5;241m=[39mtls_in_tls,
+[1;32m    787[0m )
+[1;32m    789[0m [38;5;28;01mtry[39;00m:
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/util/ssl_.py:466[0m, in [0;36mssl_wrap_socket[0;34m(sock, keyfile, certfile, cert_reqs, ca_certs, server_hostname, ssl_version, ciphers, ssl_context, ca_cert_dir, key_password, ca_cert_data, tls_in_tls)[0m
+[1;32m    464[0m     [38;5;28;01mpass[39;00m
+[0;32m--> 466[0m ssl_sock [38;5;241m=[39m _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+[1;32m    467[0m [38;5;28;01mreturn[39;00m ssl_sock
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/util/ssl_.py:510[0m, in [0;36m_ssl_wrap_socket_impl[0;34m(sock, ssl_context, tls_in_tls, server_hostname)[0m
+[1;32m    508[0m     [38;5;28;01mreturn[39;00m SSLTransport(sock, ssl_context, server_hostname)
+[0;32m--> 510[0m [38;5;28;01mreturn[39;00m ssl_context[38;5;241m.[39mwrap_socket(sock, server_hostname[38;5;241m=[39mserver_hostname)
+
+File [0;32m~/anaconda3/lib/python3.11/ssl.py:517[0m, in [0;36mSSLContext.wrap_socket[0;34m(self, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, session)[0m
+[1;32m    511[0m [38;5;28;01mdef[39;00m [38;5;21mwrap_socket[39m([38;5;28mself[39m, sock, server_side[38;5;241m=[39m[38;5;28;01mFalse[39;00m,
+[1;32m    512[0m                 do_handshake_on_connect[38;5;241m=[39m[38;5;28;01mTrue[39;00m,
+[1;32m    513[0m                 suppress_ragged_eofs[38;5;241m=[39m[38;5;28;01mTrue[39;00m,
+[1;32m    514[0m                 server_hostname[38;5;241m=[39m[38;5;28;01mNone[39;00m, session[38;5;241m=[39m[38;5;28;01mNone[39;00m):
+[1;32m    515[0m     [38;5;66;03m# SSLSocket class handles server_hostname encoding before it calls[39;00m
+[1;32m    516[0m     [38;5;66;03m# ctx._wrap_socket()[39;00m
+[0;32m--> 517[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39msslsocket_class[38;5;241m.[39m_create(
+[1;32m    518[0m         sock[38;5;241m=[39msock,
+[1;32m    519[0m         server_side[38;5;241m=[39mserver_side,
+[1;32m    520[0m         do_handshake_on_connect[38;5;241m=[39mdo_handshake_on_connect,
+[1;32m    521[0m         suppress_ragged_eofs[38;5;241m=[39msuppress_ragged_eofs,
+[1;32m    522[0m         server_hostname[38;5;241m=[39mserver_hostname,
+[1;32m    523[0m         context[38;5;241m=[39m[38;5;28mself[39m,
+[1;32m    524[0m         session[38;5;241m=[39msession
+[1;32m    525[0m     )
+
+File [0;32m~/anaconda3/lib/python3.11/ssl.py:1108[0m, in [0;36mSSLSocket._create[0;34m(cls, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, context, session)[0m
+[1;32m   1107[0m             [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mdo_handshake_on_connect should not be specified for non-blocking sockets[39m[38;5;124m"[39m)
+[0;32m-> 1108[0m         [38;5;28mself[39m[38;5;241m.[39mdo_handshake()
+[1;32m   1109[0m [38;5;28;01mexcept[39;00m ([38;5;167;01mOSError[39;00m, [38;5;167;01mValueError[39;00m):
+
+File [0;32m~/anaconda3/lib/python3.11/ssl.py:1379[0m, in [0;36mSSLSocket.do_handshake[0;34m(self, block)[0m
+[1;32m   1378[0m         [38;5;28mself[39m[38;5;241m.[39msettimeout([38;5;28;01mNone[39;00m)
+[0;32m-> 1379[0m     [38;5;28mself[39m[38;5;241m.[39m_sslobj[38;5;241m.[39mdo_handshake()
+[1;32m   1380[0m [38;5;28;01mfinally[39;00m:
+
+[0;31mConnectionResetError[0m: [Errno 54] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+[0;31mProtocolError[0m                             Traceback (most recent call last)
 File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/adapters.py:486[0m, in [0;36mHTTPAdapter.send[0;34m(self, request, stream, timeout, verify, cert, proxies)[0m
 [1;32m    485[0m [38;5;28;01mtry[39;00m:
 [0;32m--> 486[0m     resp [38;5;241m=[39m conn[38;5;241m.[39murlopen(
@@ -54,31 +147,129 @@ File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py:8
 [1;32m    846[0m )
 [1;32m    847[0m retries[38;5;241m.[39msleep()
 
-File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py:515[0m, in [0;36mRetry.increment[0;34m(self, method, url, response, error, _pool, _stacktrace)[0m
-[1;32m    514[0m     reason [38;5;241m=[39m error [38;5;129;01mor[39;00m ResponseError(cause)
-[0;32m--> 515[0m     [38;5;28;01mraise[39;00m MaxRetryError(_pool, url, reason) [38;5;28;01mfrom[39;00m [38;5;21;01mreason[39;00m  [38;5;66;03m# type: ignore[arg-type][39;00m
-[1;32m    517[0m log[38;5;241m.[39mdebug([38;5;124m"[39m[38;5;124mIncremented Retry for (url=[39m[38;5;124m'[39m[38;5;132;01m%s[39;00m[38;5;124m'[39m[38;5;124m): [39m[38;5;132;01m%r[39;00m[38;5;124m"[39m, url, new_retry)
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/util/retry.py:470[0m, in [0;36mRetry.increment[0;34m(self, method, url, response, error, _pool, _stacktrace)[0m
+[1;32m    469[0m [38;5;28;01mif[39;00m read [38;5;129;01mis[39;00m [38;5;28;01mFalse[39;00m [38;5;129;01mor[39;00m method [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mor[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m[38;5;241m.[39m_is_method_retryable(method):
+[0;32m--> 470[0m     [38;5;28;01mraise[39;00m reraise([38;5;28mtype[39m(error), error, _stacktrace)
+[1;32m    471[0m [38;5;28;01melif[39;00m read [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
 
-[0;31mMaxRetryError[0m: HTTPSConnectionPool(host='finance.sina.com.cn', port=443): Max retries exceeded with url: /stock/hkstock/HSI/klc_kl.js (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)')))
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/util/util.py:38[0m, in [0;36mreraise[0;34m(tp, value, tb)[0m
+[1;32m     37[0m [38;5;28;01mif[39;00m value[38;5;241m.[39m__traceback__ [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m tb:
+[0;32m---> 38[0m     [38;5;28;01mraise[39;00m value[38;5;241m.[39mwith_traceback(tb)
+[1;32m     39[0m [38;5;28;01mraise[39;00m value
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py:776[0m, in [0;36mHTTPConnectionPool.urlopen[0;34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)[0m
+[1;32m    775[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 776[0m     [38;5;28mself[39m[38;5;241m.[39m_prepare_proxy(conn)
+[1;32m    777[0m [38;5;28;01mexcept[39;00m (BaseSSLError, [38;5;167;01mOSError[39;00m, SocketTimeout) [38;5;28;01mas[39;00m e:
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/connectionpool.py:1041[0m, in [0;36mHTTPSConnectionPool._prepare_proxy[0;34m(self, conn)[0m
+[1;32m   1035[0m conn[38;5;241m.[39mset_tunnel(
+[1;32m   1036[0m     scheme[38;5;241m=[39mtunnel_scheme,
+[1;32m   1037[0m     host[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39m_tunnel_host,
+[1;32m   1038[0m     port[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mport,
+[1;32m   1039[0m     headers[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mproxy_headers,
+[1;32m   1040[0m )
+[0;32m-> 1041[0m conn[38;5;241m.[39mconnect()
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/connection.py:635[0m, in [0;36mHTTPSConnection.connect[0;34m(self)[0m
+[1;32m    627[0m     warnings[38;5;241m.[39mwarn(
+[1;32m    628[0m         (
+[1;32m    629[0m             [38;5;124mf[39m[38;5;124m"[39m[38;5;124mSystem time is way off (before [39m[38;5;132;01m{[39;00mRECENT_DATE[38;5;132;01m}[39;00m[38;5;124m). This will probably [39m[38;5;124m"[39m
+[0;32m   (...)[0m
+[1;32m    632[0m         SystemTimeWarning,
+[1;32m    633[0m     )
+[0;32m--> 635[0m sock_and_verified [38;5;241m=[39m _ssl_wrap_socket_and_match_hostname(
+[1;32m    636[0m     sock[38;5;241m=[39msock,
+[1;32m    637[0m     cert_reqs[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mcert_reqs,
+[1;32m    638[0m     ssl_version[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mssl_version,
+[1;32m    639[0m     ssl_minimum_version[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mssl_minimum_version,
+[1;32m    640[0m     ssl_maximum_version[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mssl_maximum_version,
+[1;32m    641[0m     ca_certs[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mca_certs,
+[1;32m    642[0m     ca_cert_dir[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mca_cert_dir,
+[1;32m    643[0m     ca_cert_data[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mca_cert_data,
+[1;32m    644[0m     cert_file[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mcert_file,
+[1;32m    645[0m     key_file[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mkey_file,
+[1;32m    646[0m     key_password[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mkey_password,
+[1;32m    647[0m     server_hostname[38;5;241m=[39mserver_hostname,
+[1;32m    648[0m     ssl_context[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mssl_context,
+[1;32m    649[0m     tls_in_tls[38;5;241m=[39mtls_in_tls,
+[1;32m    650[0m     assert_hostname[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39massert_hostname,
+[1;32m    651[0m     assert_fingerprint[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39massert_fingerprint,
+[1;32m    652[0m )
+[1;32m    653[0m [38;5;28mself[39m[38;5;241m.[39msock [38;5;241m=[39m sock_and_verified[38;5;241m.[39msocket
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/connection.py:776[0m, in [0;36m_ssl_wrap_socket_and_match_hostname[0;34m(sock, cert_reqs, ssl_version, ssl_minimum_version, ssl_maximum_version, cert_file, key_file, key_password, ca_certs, ca_cert_dir, ca_cert_data, assert_hostname, assert_fingerprint, server_hostname, ssl_context, tls_in_tls)[0m
+[1;32m    774[0m         server_hostname [38;5;241m=[39m normalized
+[0;32m--> 776[0m ssl_sock [38;5;241m=[39m ssl_wrap_socket(
+[1;32m    777[0m     sock[38;5;241m=[39msock,
+[1;32m    778[0m     keyfile[38;5;241m=[39mkey_file,
+[1;32m    779[0m     certfile[38;5;241m=[39mcert_file,
+[1;32m    780[0m     key_password[38;5;241m=[39mkey_password,
+[1;32m    781[0m     ca_certs[38;5;241m=[39mca_certs,
+[1;32m    782[0m     ca_cert_dir[38;5;241m=[39mca_cert_dir,
+[1;32m    783[0m     ca_cert_data[38;5;241m=[39mca_cert_data,
+[1;32m    784[0m     server_hostname[38;5;241m=[39mserver_hostname,
+[1;32m    785[0m     ssl_context[38;5;241m=[39mcontext,
+[1;32m    786[0m     tls_in_tls[38;5;241m=[39mtls_in_tls,
+[1;32m    787[0m )
+[1;32m    789[0m [38;5;28;01mtry[39;00m:
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/util/ssl_.py:466[0m, in [0;36mssl_wrap_socket[0;34m(sock, keyfile, certfile, cert_reqs, ca_certs, server_hostname, ssl_version, ciphers, ssl_context, ca_cert_dir, key_password, ca_cert_data, tls_in_tls)[0m
+[1;32m    464[0m     [38;5;28;01mpass[39;00m
+[0;32m--> 466[0m ssl_sock [38;5;241m=[39m _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+[1;32m    467[0m [38;5;28;01mreturn[39;00m ssl_sock
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/urllib3/util/ssl_.py:510[0m, in [0;36m_ssl_wrap_socket_impl[0;34m(sock, ssl_context, tls_in_tls, server_hostname)[0m
+[1;32m    508[0m     [38;5;28;01mreturn[39;00m SSLTransport(sock, ssl_context, server_hostname)
+[0;32m--> 510[0m [38;5;28;01mreturn[39;00m ssl_context[38;5;241m.[39mwrap_socket(sock, server_hostname[38;5;241m=[39mserver_hostname)
+
+File [0;32m~/anaconda3/lib/python3.11/ssl.py:517[0m, in [0;36mSSLContext.wrap_socket[0;34m(self, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, session)[0m
+[1;32m    511[0m [38;5;28;01mdef[39;00m [38;5;21mwrap_socket[39m([38;5;28mself[39m, sock, server_side[38;5;241m=[39m[38;5;28;01mFalse[39;00m,
+[1;32m    512[0m                 do_handshake_on_connect[38;5;241m=[39m[38;5;28;01mTrue[39;00m,
+[1;32m    513[0m                 suppress_ragged_eofs[38;5;241m=[39m[38;5;28;01mTrue[39;00m,
+[1;32m    514[0m                 server_hostname[38;5;241m=[39m[38;5;28;01mNone[39;00m, session[38;5;241m=[39m[38;5;28;01mNone[39;00m):
+[1;32m    515[0m     [38;5;66;03m# SSLSocket class handles server_hostname encoding before it calls[39;00m
+[1;32m    516[0m     [38;5;66;03m# ctx._wrap_socket()[39;00m
+[0;32m--> 517[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39msslsocket_class[38;5;241m.[39m_create(
+[1;32m    518[0m         sock[38;5;241m=[39msock,
+[1;32m    519[0m         server_side[38;5;241m=[39mserver_side,
+[1;32m    520[0m         do_handshake_on_connect[38;5;241m=[39mdo_handshake_on_connect,
+[1;32m    521[0m         suppress_ragged_eofs[38;5;241m=[39msuppress_ragged_eofs,
+[1;32m    522[0m         server_hostname[38;5;241m=[39mserver_hostname,
+[1;32m    523[0m         context[38;5;241m=[39m[38;5;28mself[39m,
+[1;32m    524[0m         session[38;5;241m=[39msession
+[1;32m    525[0m     )
+
+File [0;32m~/anaconda3/lib/python3.11/ssl.py:1108[0m, in [0;36mSSLSocket._create[0;34m(cls, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, context, session)[0m
+[1;32m   1107[0m             [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mdo_handshake_on_connect should not be specified for non-blocking sockets[39m[38;5;124m"[39m)
+[0;32m-> 1108[0m         [38;5;28mself[39m[38;5;241m.[39mdo_handshake()
+[1;32m   1109[0m [38;5;28;01mexcept[39;00m ([38;5;167;01mOSError[39;00m, [38;5;167;01mValueError[39;00m):
+
+File [0;32m~/anaconda3/lib/python3.11/ssl.py:1379[0m, in [0;36mSSLSocket.do_handshake[0;34m(self, block)[0m
+[1;32m   1378[0m         [38;5;28mself[39m[38;5;241m.[39msettimeout([38;5;28;01mNone[39;00m)
+[0;32m-> 1379[0m     [38;5;28mself[39m[38;5;241m.[39m_sslobj[38;5;241m.[39mdo_handshake()
+[1;32m   1380[0m [38;5;28;01mfinally[39;00m:
+
+[0;31mProtocolError[0m: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
 
 During handling of the above exception, another exception occurred:
 
-[0;31mSSLError[0m                                  Traceback (most recent call last)
-Cell [0;32mIn[6], line 1[0m
-[0;32m----> 1[0m stock_hk_daily_hfq_df [38;5;241m=[39m ak[38;5;241m.[39mstock_hk_daily(symbol[38;5;241m=[39m[38;5;124m"[39m[38;5;124mHSI[39m[38;5;124m"[39m, adjust[38;5;241m=[39m[38;5;124m"[39m[38;5;124m"[39m)
-[1;32m      2[0m stock_hk_daily_hfq_df
+[0;31mConnectionError[0m                           Traceback (most recent call last)
+Cell [0;32mIn[8], line 1[0m
+[0;32m----> 1[0m stock_dji_daily_df [38;5;241m=[39m ak[38;5;241m.[39mstock_us_daily(symbol[38;5;241m=[39m[38;5;124m"[39m[38;5;124m.DJI[39m[38;5;124m"[39m, adjust[38;5;241m=[39m[38;5;124m"[39m[38;5;124m"[39m)
+[1;32m      2[0m stock_dji_daily_df
 
-File [0;32m~/anaconda3/lib/python3.11/site-packages/akshare/stock/stock_hk_sina.py:72[0m, in [0;36mstock_hk_daily[0;34m(symbol, adjust)[0m
-[1;32m     61[0m [38;5;28;01mdef[39;00m [38;5;21mstock_hk_daily[39m(symbol: [38;5;28mstr[39m [38;5;241m=[39m [38;5;124m"[39m[38;5;124m00981[39m[38;5;124m"[39m, adjust: [38;5;28mstr[39m [38;5;241m=[39m [38;5;124m"[39m[38;5;124m"[39m) [38;5;241m-[39m[38;5;241m>[39m pd[38;5;241m.[39mDataFrame:
-[1;32m     62[0m [38;5;250m    [39m[38;5;124;03m"""[39;00m
-[1;32m     63[0m [38;5;124;03m    新浪财经-港股-个股的历史行情数据[39;00m
-[1;32m     64[0m [38;5;124;03m    https://stock.finance.sina.com.cn/hkstock/quotes/02912.html[39;00m
+File [0;32m~/anaconda3/lib/python3.11/site-packages/akshare/stock/stock_us_sina.py:140[0m, in [0;36mstock_us_daily[0;34m(symbol, adjust)[0m
+[1;32m    138[0m data_df [38;5;241m=[39m data_df[38;5;241m.[39mastype([38;5;124m"[39m[38;5;124mfloat[39m[38;5;124m"[39m)
+[1;32m    139[0m url [38;5;241m=[39m us_sina_stock_hist_qfq_url[38;5;241m.[39mformat(symbol)
+[0;32m--> 140[0m res [38;5;241m=[39m requests[38;5;241m.[39mget(url)
+[1;32m    141[0m qfq_factor_df [38;5;241m=[39m pd[38;5;241m.[39mDataFrame([38;5;28meval[39m(res[38;5;241m.[39mtext[38;5;241m.[39msplit([38;5;124m"[39m[38;5;124m=[39m[38;5;124m"[39m)[[38;5;241m1[39m][38;5;241m.[39msplit([38;5;124m"[39m[38;5;130;01m\n[39;00m[38;5;124m"[39m)[[38;5;241m0[39m])[[38;5;124m"[39m[38;5;124mdata[39m[38;5;124m"[39m])
+[1;32m    142[0m qfq_factor_df[38;5;241m.[39mrename(
+[1;32m    143[0m     columns[38;5;241m=[39m{
+[1;32m    144[0m         [38;5;124m"[39m[38;5;124mc[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124madjust[39m[38;5;124m"[39m,
 [0;32m   (...)[0m
-[1;32m     70[0m [38;5;124;03m    :rtype: pandas.DataFrame[39;00m
-[1;32m     71[0m [38;5;124;03m    """[39;00m
-[0;32m---> 72[0m     r [38;5;241m=[39m requests[38;5;241m.[39mget(hk_sina_stock_hist_url[38;5;241m.[39mformat(symbol))
-[1;32m     73[0m     js_code [38;5;241m=[39m py_mini_racer[38;5;241m.[39mMiniRacer()
-[1;32m     74[0m     js_code[38;5;241m.[39meval(hk_js_decode)
+[1;32m    148[0m     inplace[38;5;241m=[39m[38;5;28;01mTrue[39;00m,
+[1;32m    149[0m )
 
 File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/api.py:73[0m, in [0;36mget[0;34m(url, params, **kwargs)[0m
 [1;32m     62[0m [38;5;28;01mdef[39;00m [38;5;21mget[39m(url, params[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
@@ -113,13 +304,18 @@ File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/sessions.py:703[0
 [1;32m    705[0m [38;5;66;03m# Total elapsed time of the request (approximately)[39;00m
 [1;32m    706[0m elapsed [38;5;241m=[39m preferred_clock() [38;5;241m-[39m start
 
-File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/adapters.py:517[0m, in [0;36mHTTPAdapter.send[0;34m(self, request, stream, timeout, verify, cert, proxies)[0m
-[1;32m    513[0m         [38;5;28;01mraise[39;00m ProxyError(e, request[38;5;241m=[39mrequest)
-[1;32m    515[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(e[38;5;241m.[39mreason, _SSLError):
-[1;32m    516[0m         [38;5;66;03m# This branch is for urllib3 v1.22 and later.[39;00m
-[0;32m--> 517[0m         [38;5;28;01mraise[39;00m SSLError(e, request[38;5;241m=[39mrequest)
-[1;32m    519[0m     [38;5;28;01mraise[39;00m [38;5;167;01mConnectionError[39;00m(e, request[38;5;241m=[39mrequest)
-[1;32m    521[0m [38;5;28;01mexcept[39;00m ClosedPoolError [38;5;28;01mas[39;00m e:
+File [0;32m~/anaconda3/lib/python3.11/site-packages/requests/adapters.py:501[0m, in [0;36mHTTPAdapter.send[0;34m(self, request, stream, timeout, verify, cert, proxies)[0m
+[1;32m    486[0m     resp [38;5;241m=[39m conn[38;5;241m.[39murlopen(
+[1;32m    487[0m         method[38;5;241m=[39mrequest[38;5;241m.[39mmethod,
+[1;32m    488[0m         url[38;5;241m=[39murl,
+[0;32m   (...)[0m
+[1;32m    497[0m         chunked[38;5;241m=[39mchunked,
+[1;32m    498[0m     )
+[1;32m    500[0m [38;5;28;01mexcept[39;00m (ProtocolError, [38;5;167;01mOSError[39;00m) [38;5;28;01mas[39;00m err:
+[0;32m--> 501[0m     [38;5;28;01mraise[39;00m [38;5;167;01mConnectionError[39;00m(err, request[38;5;241m=[39mrequest)
+[1;32m    503[0m [38;5;28;01mexcept[39;00m MaxRetryError [38;5;28;01mas[39;00m e:
+[1;32m    504[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(e[38;5;241m.[39mreason, ConnectTimeoutError):
+[1;32m    505[0m         [38;5;66;03m# TODO: Remove this in 3.0.0: see #2811[39;00m
 
-[0;31mSSLError[0m: HTTPSConnectionPool(host='finance.sina.com.cn', port=443): Max retries exceeded with url: /stock/hkstock/HSI/klc_kl.js (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1006)')))
+[0;31mConnectionError[0m: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
 
