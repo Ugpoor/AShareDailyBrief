@@ -145,5 +145,5 @@ File [0;32m~/anaconda3/lib/python3.11/subprocess.py:1950[0m, in [0;36mPopen._
 [0;32m-> 1950[0m     [38;5;28;01mraise[39;00m child_exception_type(errno_num, err_msg, err_filename)
 [1;32m   1951[0m [38;5;28;01mraise[39;00m child_exception_type(err_msg)
 
-[0;31mOSError[0m: [Errno 8] Exec format error: '/Users/mac/.wdm/drivers/chromedriver/mac64/130.0.6723.91/chromedriver-mac-x64/THIRD_PARTY_NOTICES.chromedriver'
+[0;31mOSError[0m: [Errno 8] Exec format error: '/Users/mac/.wdm/drivers/chromedriver/mac64/130.0.6723.93/chromedriver-mac-x64/THIRD_PARTY_NOTICES.chromedriver'
 
