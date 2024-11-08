@@ -1,0 +1,64 @@
+Traceback (most recent call last):
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import dolphindb as ddb
+from concurrent.futures import ThreadPoolExecutor
+
+# 初始化 DolphinDB 连接
+s = ddb.session()
+s.connect("localhost", 8848, "admin", "123456")  # 替换为实际的主机、端口、用户名和密码
+
+# 创建 DolphinDB 表
+s.run("""
+if (existsDatabase("dfs://Quote")) {
+    dropDatabase("dfs://Quote")
+}
+t = table(1:0, `timestamp`sym`sell_5`sell_5_vol`sell_4`sell_4_vol`sell_3`sell_3_vol`sell_2`sell_2_vol`sell_1`sell_1_vol`buy_1`buy_1_vol`buy_2`buy_2_vol`buy_3`buy_3_vol`buy_4`buy_4_vol`buy_5`buy_5_vol`最新`均价`涨幅`涨跌`总手`金额`换手`量比`最高`最低`今开`昨收`涨停`跌停`外盘`内盘, [TIMESTAMP, SYMBOL, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE])
+database("dfs://Quote", VALUE, t)
+""")
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mRuntimeError[0m                              Traceback (most recent call last)
+Cell [0;32mIn[18], line 9[0m
+[1;32m      6[0m s[38;5;241m.[39mconnect([38;5;124m"[39m[38;5;124mlocalhost[39m[38;5;124m"[39m, [38;5;241m8848[39m, [38;5;124m"[39m[38;5;124madmin[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124m123456[39m[38;5;124m"[39m)  [38;5;66;03m# 替换为实际的主机、端口、用户名和密码[39;00m
+[1;32m      8[0m [38;5;66;03m# 创建 DolphinDB 表[39;00m
+[0;32m----> 9[0m s[38;5;241m.[39mrun([38;5;124m"""[39m
+[1;32m     10[0m [38;5;124mif (existsDatabase([39m[38;5;124m"[39m[38;5;124mdfs://Quote[39m[38;5;124m"[39m[38;5;124m)) [39m[38;5;124m{[39m
+[1;32m     11[0m [38;5;124m    dropDatabase([39m[38;5;124m"[39m[38;5;124mdfs://Quote[39m[38;5;124m"[39m[38;5;124m)[39m
+[1;32m     12[0m [38;5;124m}[39m
+[1;32m     13[0m [38;5;124mt = table(1:0, `timestamp`sym`sell_5`sell_5_vol`sell_4`sell_4_vol`sell_3`sell_3_vol`sell_2`sell_2_vol`sell_1`sell_1_vol`buy_1`buy_1_vol`buy_2`buy_2_vol`buy_3`buy_3_vol`buy_4`buy_4_vol`buy_5`buy_5_vol`最新`均价`涨幅`涨跌`总手`金额`换手`量比`最高`最低`今开`昨收`涨停`跌停`外盘`内盘, [TIMESTAMP, SYMBOL, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE])[39m
+[1;32m     14[0m [38;5;124mdatabase([39m[38;5;124m"[39m[38;5;124mdfs://Quote[39m[38;5;124m"[39m[38;5;124m, VALUE, t)[39m
+[1;32m     15[0m [38;5;124m"""[39m)
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/dolphindb/session.py:501[0m, in [0;36mSession.run[0;34m(self, script, *args, **kwargs)[0m
+[1;32m    499[0m     [38;5;28;01mif[39;00m [38;5;124m"[39m[38;5;124mfetchSize[39m[38;5;124m"[39m [38;5;129;01min[39;00m kwargs[38;5;241m.[39mkeys():
+[1;32m    500[0m         [38;5;28;01mreturn[39;00m BlockReader([38;5;28mself[39m[38;5;241m.[39mcpp[38;5;241m.[39mrunBlock(script, [38;5;241m*[39m[38;5;241m*[39mkwargs))
+[0;32m--> 501[0m [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mcpp[38;5;241m.[39mrun(script, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+
+[0;31mRuntimeError[0m: Server response: 't = table(1 : 0, ["timestamp","sym","sell_5","sell_5_vol","sell_4","sell_4_vol","sell_3","sell_3_vol","sell_2","sell_2_vol","sell_1","sell_1_vol","buy_1","buy_1_vol","buy_2","buy_2_vol","buy_3","buy_3_vol","buy_4","buy_4_vol","buy_5","buy_5_vol","最新","均价","涨幅","涨跌","总手","金额","换手","量比","最高","最低","今开","昨收","涨停","跌停","外盘","内盘"], [12,17,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16]) => The number of column names should be the same as the number of data types.' script: '
+if (existsDatabase("dfs://Quote")) {
+    dropDatabase("dfs://Quote")
+}
+t = table(1:0, `timestamp`sym`sell_5`sell_5_vol`sell_4`sell_4_vol`sell_3`sell_3_vol`sell_2`sell_2_vol`sell_1`sell_1_vol`buy_1`buy_1_vol`buy_2`buy_2_vol`buy_3`buy_3_vol`buy_4`buy_4_vol`buy_5`buy_5_vol`最新`均价`涨幅`涨跌`总手`金额`换手`量比`最高`最低`今开`昨收`涨停`跌停`外盘`内盘, [TIMESTAMP, SYMBOL, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE])
+database("dfs://Quote", VALUE, t)
+'
+
