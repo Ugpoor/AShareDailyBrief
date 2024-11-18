@@ -37,14 +37,9 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-stockCharts,marketDepths={},{}
-
-for f in focusStocks:
-    print('='*75)
-    stockCharts[f]=plotDcStocks(f,periods)
-    stockname=stockCharts[f]['name']
-    print(f'{stockname}（{f}）的市场深度：')
-    marketDepths[f]=plotActiveMarketDepth(f)
-    
+#本轮行情启动日
+syclestart='20240924'
+result_df = get_stock_zt_pool(syclestart, lastday)
+result_df
 -------------------
 
