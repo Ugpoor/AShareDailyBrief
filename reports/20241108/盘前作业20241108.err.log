@@ -35,9 +35,6 @@ database("dfs://Quote", VALUE, t)
 """)
 ------------------
 
------ stdout -----
-Failed to connect to host = localhost port = 8848 with error code 61
-------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mRuntimeError[0m                              Traceback (most recent call last)
@@ -57,5 +54,11 @@ File [0;32m~/anaconda3/lib/python3.11/site-packages/dolphindb/session.py:501[0
 [1;32m    500[0m         [38;5;28;01mreturn[39;00m BlockReader([38;5;28mself[39m[38;5;241m.[39mcpp[38;5;241m.[39mrunBlock(script, [38;5;241m*[39m[38;5;241m*[39mkwargs))
 [0;32m--> 501[0m [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mcpp[38;5;241m.[39mrun(script, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
 
-[0;31mRuntimeError[0m: Couldn't send script/function to the remote host because the connection has been closed
+[0;31mRuntimeError[0m: Server response: 't = table(1 : 0, ["timestamp","sym","sell_5","sell_5_vol","sell_4","sell_4_vol","sell_3","sell_3_vol","sell_2","sell_2_vol","sell_1","sell_1_vol","buy_1","buy_1_vol","buy_2","buy_2_vol","buy_3","buy_3_vol","buy_4","buy_4_vol","buy_5","buy_5_vol","最新","均价","涨幅","涨跌","总手","金额","换手","量比","最高","最低","今开","昨收","涨停","跌停","外盘","内盘"], [12,17,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16]) => The number of column names should be the same as the number of data types.' script: '
+if (existsDatabase("dfs://Quote")) {
+    dropDatabase("dfs://Quote")
+}
+t = table(1:0, `timestamp`sym`sell_5`sell_5_vol`sell_4`sell_4_vol`sell_3`sell_3_vol`sell_2`sell_2_vol`sell_1`sell_1_vol`buy_1`buy_1_vol`buy_2`buy_2_vol`buy_3`buy_3_vol`buy_4`buy_4_vol`buy_5`buy_5_vol`最新`均价`涨幅`涨跌`总手`金额`换手`量比`最高`最低`今开`昨收`涨停`跌停`外盘`内盘, [TIMESTAMP, SYMBOL, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE, DOUBLE])
+database("dfs://Quote", VALUE, t)
+'
 
