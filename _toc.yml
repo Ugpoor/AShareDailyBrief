@@ -12,93 +12,160 @@ parts:
       - file: 20240926/盘前作业20240926
   - caption: "20240927"
     chapters:
+        - caption: 20240927
+    chapters:
       - file: 20240927/盘前作业20240927
   - caption: "20241008"
+    chapters:
+        - caption: 20241008
     chapters:
       - file: 20241008/盘前作业20241008
   - caption: "20241009"
     chapters:
+        - caption: 20241009
+    chapters:
       - file: 20241009/盘前作业20241009
   - caption: "20241010"
+    chapters:
+        - caption: 20241010
     chapters:
       - file: 20241010/盘前作业20241010
   - caption: "20241011"
     chapters:
+        - caption: 20241011
+    chapters:
       - file: 20241011/盘前作业20241011
   - caption: "20241014"
+    chapters:
+        - caption: 20241014
     chapters:
       - file: 20241014/盘前作业20241014
   - caption: "20241015"
     chapters:
+        - caption: 20241015
+    chapters:
       - file: 20241015/盘前作业20241015
   - caption: "20241016"
+    chapters:
+        - caption: 20241016
     chapters:
       - file: 20241016/盘前作业20241016
   - caption: "20241017"
     chapters:
+        - caption: 20241017
+    chapters:
       - file: 20241017/盘前作业20241017
   - caption: "20241018"
+    chapters:
+        - caption: 20241018
     chapters:
       - file: 20241018/盘前作业20241018
   - caption: "20241021"
     chapters:
+        - caption: 20241021
+    chapters:
       - file: 20241021/盘前作业20241021
   - caption: "20241022"
+    chapters:
+        - caption: 20241022
     chapters:
       - file: 20241022/盘前作业20241022
   - caption: "20241023"
     chapters:
+        - caption: 20241023
+    chapters:
       - file: 20241023/盘前作业20241023
   - caption: "20241024"
+    chapters:
+        - caption: 20241024
     chapters:
       - file: 20241024/盘前作业20241024
   - caption: "20241025"
     chapters:
+        - caption: 20241025
+    chapters:
       - file: 20241025/盘前作业20241025
   - caption: "20241028"
+    chapters:
+        - caption: 20241028
     chapters:
       - file: 20241028/盘前作业20241028
   - caption: "20241029"
     chapters:
+        - caption: 20241029
+    chapters:
       - file: 20241029/盘前作业20241029
   - caption: "20241030"
+    chapters:
+        - caption: 20241030
     chapters:
       - file: 20241030/盘前作业20241030
   - caption: "20241031"
     chapters:
+        - caption: 20241031
+    chapters:
       - file: 20241031/盘前作业20241031
   - caption: "20241101"
+    chapters:
+        - caption: 20241101
     chapters:
       - file: 20241101/盘前作业20241101
   - caption: "20241104"
     chapters:
+        - caption: 20241104
+    chapters:
       - file: 20241104/盘前作业20241104
   - caption: "20241105"
+    chapters:
+        - caption: 20241105
     chapters:
       - file: 20241105/盘前作业20241105
   - caption: "20241106"
     chapters:
+        - caption: 20241106
+    chapters:
       - file: 20241106/盘前作业20241106
   - caption: "20241107"
+    chapters:
+        - caption: 20241107
     chapters:
       - file: 20241107/盘前作业20241107
   - caption: "20241108"
     chapters:
+        - caption: 20241108
+    chapters:
       - file: 20241108/盘前作业20241108
   - caption: '20241111'
+    chapters:
+        - caption: 20241111
     chapters:
       - file: 20241111/盘前作业20241111
       - file: 20241111/盘中动态20241111
   - caption: '20241115'
     chapters:
+        - caption: 20241115
+    chapters:
       - file: 20241115/盘前作业20241115
       - file: 20241115/盘中动态20241115
   - caption: '20241112'
     chapters:
+        - caption: 20241112
+    chapters:
       - file: 20241112/盘前作业20241112
       - file: 20241112/盘中动态20241112
-
   - caption: '20241118'
+    chapters:
+        - caption: 20241118
     chapters:
       - file: 20241118/盘前作业20241118
       - file: 20241118/盘中动态20241118
+  - caption: '20241119'
+    chapters:
+        - caption: 20241119
+    chapters:
+      - file: 20241119/盘前作业20241119
+      - file: 20241119/盘中动态20241119
+  - caption: '20241120'
+    chapters:
+      - file: 20241120/盘前作业20241120
+      - file: 20241120/盘中动态20241120
