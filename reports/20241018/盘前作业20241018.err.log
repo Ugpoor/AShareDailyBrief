@@ -1,17 +1,4 @@
 Traceback (most recent call last):
-  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 778, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 189, in ensure_async
-    result = await obj
-             ^^^^^^^^^
-  File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_client/channels.py", line 230, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
   File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
@@ -25,20 +12,102 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^
   File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1001, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 802, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 852, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-stocksymb='300339'
-periods=['daily','weekly','monthly']
-stockDict=plotDcStocks(stocksymb,periods)
--------------------
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+def limitupList(date):
+    collist=['所属行业','代码','名称','涨跌幅','首次封板时间','最后封板时间','炸板次数','涨停统计','连板数']
+    stock_zt_pool_em_df = ak.stock_zt_pool_em(date)
+    last_hs_10=stock_zt_pool_em_df[collist]
+    return last_hs_10
+last_hs_10=limitupList(lastday)
+last_hs_10
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[12], line 6[0m
+[1;32m      4[0m     last_hs_10[38;5;241m=[39mstock_zt_pool_em_df[collist]
+[1;32m      5[0m     [38;5;28;01mreturn[39;00m last_hs_10
+[0;32m----> 6[0m last_hs_10[38;5;241m=[39mlimitupList(lastday)
+[1;32m      7[0m last_hs_10
+
+Cell [0;32mIn[12], line 3[0m, in [0;36mlimitupList[0;34m(date)[0m
+[1;32m      1[0m [38;5;28;01mdef[39;00m [38;5;21mlimitupList[39m(date):
+[1;32m      2[0m     collist[38;5;241m=[39m[[38;5;124m'[39m[38;5;124m所属行业[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m代码[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m名称[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m涨跌幅[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m首次封板时间[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m最后封板时间[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m炸板次数[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m涨停统计[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124m连板数[39m[38;5;124m'[39m]
+[0;32m----> 3[0m     stock_zt_pool_em_df [38;5;241m=[39m ak[38;5;241m.[39mstock_zt_pool_em(date)
+[1;32m      4[0m     last_hs_10[38;5;241m=[39mstock_zt_pool_em_df[collist]
+[1;32m      5[0m     [38;5;28;01mreturn[39;00m last_hs_10
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/akshare/stock_feature/stock_ztb_em.py:50[0m, in [0;36mstock_zt_pool_em[0;34m(date)[0m
+[1;32m     48[0m temp_df[38;5;241m.[39mreset_index(inplace[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+[1;32m     49[0m temp_df[[38;5;124m"[39m[38;5;124mindex[39m[38;5;124m"[39m] [38;5;241m=[39m [38;5;28mrange[39m([38;5;241m1[39m, [38;5;28mlen[39m(temp_df) [38;5;241m+[39m [38;5;241m1[39m)
+[0;32m---> 50[0m temp_df[38;5;241m.[39mcolumns [38;5;241m=[39m [
+[1;32m     51[0m     [38;5;124m"[39m[38;5;124m序号[39m[38;5;124m"[39m,
+[1;32m     52[0m     [38;5;124m"[39m[38;5;124m代码[39m[38;5;124m"[39m,
+[1;32m     53[0m     [38;5;124m"[39m[38;5;124m_[39m[38;5;124m"[39m,
+[1;32m     54[0m     [38;5;124m"[39m[38;5;124m名称[39m[38;5;124m"[39m,
+[1;32m     55[0m     [38;5;124m"[39m[38;5;124m最新价[39m[38;5;124m"[39m,
+[1;32m     56[0m     [38;5;124m"[39m[38;5;124m涨跌幅[39m[38;5;124m"[39m,
+[1;32m     57[0m     [38;5;124m"[39m[38;5;124m成交额[39m[38;5;124m"[39m,
+[1;32m     58[0m     [38;5;124m"[39m[38;5;124m流通市值[39m[38;5;124m"[39m,
+[1;32m     59[0m     [38;5;124m"[39m[38;5;124m总市值[39m[38;5;124m"[39m,
+[1;32m     60[0m     [38;5;124m"[39m[38;5;124m换手率[39m[38;5;124m"[39m,
+[1;32m     61[0m     [38;5;124m"[39m[38;5;124m连板数[39m[38;5;124m"[39m,
+[1;32m     62[0m     [38;5;124m"[39m[38;5;124m首次封板时间[39m[38;5;124m"[39m,
+[1;32m     63[0m     [38;5;124m"[39m[38;5;124m最后封板时间[39m[38;5;124m"[39m,
+[1;32m     64[0m     [38;5;124m"[39m[38;5;124m封板资金[39m[38;5;124m"[39m,
+[1;32m     65[0m     [38;5;124m"[39m[38;5;124m炸板次数[39m[38;5;124m"[39m,
+[1;32m     66[0m     [38;5;124m"[39m[38;5;124m所属行业[39m[38;5;124m"[39m,
+[1;32m     67[0m     [38;5;124m"[39m[38;5;124m涨停统计[39m[38;5;124m"[39m,
+[1;32m     68[0m ]
+[1;32m     69[0m temp_df[[38;5;124m"[39m[38;5;124m涨停统计[39m[38;5;124m"[39m] [38;5;241m=[39m (
+[1;32m     70[0m     temp_df[[38;5;124m"[39m[38;5;124m涨停统计[39m[38;5;124m"[39m][38;5;241m.[39mapply([38;5;28;01mlambda[39;00m x: [38;5;28mdict[39m(x)[[38;5;124m"[39m[38;5;124mdays[39m[38;5;124m"[39m])[38;5;241m.[39mastype([38;5;28mstr[39m)
+[1;32m     71[0m     [38;5;241m+[39m [38;5;124m"[39m[38;5;124m/[39m[38;5;124m"[39m
+[1;32m     72[0m     [38;5;241m+[39m temp_df[[38;5;124m"[39m[38;5;124m涨停统计[39m[38;5;124m"[39m][38;5;241m.[39mapply([38;5;28;01mlambda[39;00m x: [38;5;28mdict[39m(x)[[38;5;124m"[39m[38;5;124mct[39m[38;5;124m"[39m])[38;5;241m.[39mastype([38;5;28mstr[39m)
+[1;32m     73[0m )
+[1;32m     74[0m temp_df [38;5;241m=[39m temp_df[
+[1;32m     75[0m     [
+[1;32m     76[0m         [38;5;124m"[39m[38;5;124m序号[39m[38;5;124m"[39m,
+[0;32m   (...)[0m
+[1;32m     92[0m     ]
+[1;32m     93[0m ]
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/core/generic.py:6310[0m, in [0;36mNDFrame.__setattr__[0;34m(self, name, value)[0m
+[1;32m   6308[0m [38;5;28;01mtry[39;00m:
+[1;32m   6309[0m     [38;5;28mobject[39m[38;5;241m.[39m[38;5;21m__getattribute__[39m([38;5;28mself[39m, name)
+[0;32m-> 6310[0m     [38;5;28;01mreturn[39;00m [38;5;28mobject[39m[38;5;241m.[39m[38;5;21m__setattr__[39m([38;5;28mself[39m, name, value)
+[1;32m   6311[0m [38;5;28;01mexcept[39;00m [38;5;167;01mAttributeError[39;00m:
+[1;32m   6312[0m     [38;5;28;01mpass[39;00m
+
+File [0;32mproperties.pyx:69[0m, in [0;36mpandas._libs.properties.AxisProperty.__set__[0;34m()[0m
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/core/generic.py:813[0m, in [0;36mNDFrame._set_axis[0;34m(self, axis, labels)[0m
+[1;32m    808[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
+[1;32m    809[0m [38;5;124;03mThis is called from the cython code when we set the `index` attribute[39;00m
+[1;32m    810[0m [38;5;124;03mdirectly, e.g. `series.index = [1, 2, 3]`.[39;00m
+[1;32m    811[0m [38;5;124;03m"""[39;00m
+[1;32m    812[0m labels [38;5;241m=[39m ensure_index(labels)
+[0;32m--> 813[0m [38;5;28mself[39m[38;5;241m.[39m_mgr[38;5;241m.[39mset_axis(axis, labels)
+[1;32m    814[0m [38;5;28mself[39m[38;5;241m.[39m_clear_item_cache()
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/core/internals/managers.py:238[0m, in [0;36mBaseBlockManager.set_axis[0;34m(self, axis, new_labels)[0m
+[1;32m    236[0m [38;5;28;01mdef[39;00m [38;5;21mset_axis[39m([38;5;28mself[39m, axis: AxisInt, new_labels: Index) [38;5;241m-[39m[38;5;241m>[39m [38;5;28;01mNone[39;00m:
+[1;32m    237[0m     [38;5;66;03m# Caller is responsible for ensuring we have an Index object.[39;00m
+[0;32m--> 238[0m     [38;5;28mself[39m[38;5;241m.[39m_validate_set_axis(axis, new_labels)
+[1;32m    239[0m     [38;5;28mself[39m[38;5;241m.[39maxes[axis] [38;5;241m=[39m new_labels
+
+File [0;32m~/anaconda3/lib/python3.11/site-packages/pandas/core/internals/base.py:98[0m, in [0;36mDataManager._validate_set_axis[0;34m(self, axis, new_labels)[0m
+[1;32m     95[0m     [38;5;28;01mpass[39;00m
+[1;32m     97[0m [38;5;28;01melif[39;00m new_len [38;5;241m!=[39m old_len:
+[0;32m---> 98[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[1;32m     99[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mLength mismatch: Expected axis has [39m[38;5;132;01m{[39;00mold_len[38;5;132;01m}[39;00m[38;5;124m elements, new [39m[38;5;124m"[39m
+[1;32m    100[0m         [38;5;124mf[39m[38;5;124m"[39m[38;5;124mvalues have [39m[38;5;132;01m{[39;00mnew_len[38;5;132;01m}[39;00m[38;5;124m elements[39m[38;5;124m"[39m
+[1;32m    101[0m     )
+
+[0;31mValueError[0m: Length mismatch: Expected axis has 1 elements, new values have 17 elements
 

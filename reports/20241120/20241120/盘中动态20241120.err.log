@@ -1,0 +1,83 @@
+Traceback (most recent call last):
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/mac/anaconda3/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import datetime
+
+# 股票代码列表
+symbols = ["stock_code1", "stock_code2", "stock_code3"]  # 替换为实际股票代码
+
+def is_within_trading_hours(current_time):
+    # 定义交易时间段
+    morning_start = current_time.replace(hour=9, minute=15, second=0, microsecond=0)
+    morning_end = current_time.replace(hour=11, minute=30, second=0, microsecond=0)
+    afternoon_start = current_time.replace(hour=13, minute=0, second=0, microsecond=0)
+    afternoon_end = current_time.replace(hour=15, minute=0, microsecond=0)
+    
+    return (morning_start <= current_time <= morning_end) or (afternoon_start <= current_time <= afternoon_end)
+
+def fetch_and_store(symbol):
+    # 获取当前时间
+    current_time = datetime.now()
+    print(current_time)
+
+    if is_within_trading_hours(current_time):
+        # 获取股票数据
+        df = ak.stock_bid_ask_em(symbol=symbol)
+
+        # 转换为字典
+        data_dict = df.set_index('item').to_dict()['value']
+
+        # 添加时间戳和股票代码到数据字典
+        data_dict['timestamp'] = current_time
+        data_dict['sym'] = symbol
+
+        # 转换数据为 DataFrame
+        transformed_df = pd.DataFrame([data_dict])
+
+        # 将数据插入到 DolphinDB
+        s.upload({"data": transformed_df})
+        s.run("""
+        append!(loadTable("dfs://Quote", "t"), data)
+        """)
+
+while True:
+    # 使用多线程获取多个股票代码的数据
+    with ThreadPoolExecutor(max_workers=len(symbols)) as executor:
+        executor.map(fetch_and_store, symbols)
+
+    # 每3秒检查一次
+    time.sleep(3)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[4], line 42[0m
+[1;32m     36[0m         s[38;5;241m.[39mrun([38;5;124m"""[39m
+[1;32m     37[0m [38;5;124m        append!(loadTable([39m[38;5;124m"[39m[38;5;124mdfs://Quote[39m[38;5;124m"[39m[38;5;124m, [39m[38;5;124m"[39m[38;5;124mt[39m[38;5;124m"[39m[38;5;124m), data)[39m
+[1;32m     38[0m [38;5;124m        [39m[38;5;124m"""[39m)
+[1;32m     40[0m [38;5;28;01mwhile[39;00m [38;5;28;01mTrue[39;00m:
+[1;32m     41[0m     [38;5;66;03m# 使用多线程获取多个股票代码的数据[39;00m
+[0;32m---> 42[0m     [38;5;28;01mwith[39;00m ThreadPoolExecutor(max_workers[38;5;241m=[39m[38;5;28mlen[39m(symbols)) [38;5;28;01mas[39;00m executor:
+[1;32m     43[0m         executor[38;5;241m.[39mmap(fetch_and_store, symbols)
+[1;32m     45[0m     [38;5;66;03m# 每3秒检查一次[39;00m
+
+[0;31mNameError[0m: name 'ThreadPoolExecutor' is not defined
+

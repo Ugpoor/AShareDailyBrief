@@ -37,12 +37,12 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-stockCharts={}
-periods=['daily','weekly','monthly']
-
-for f in focusStocks:
-    print('='*75)
-    stockCharts[f]=plotDcStocks(f,periods)
-    stockname=stockCharts[f]['name']
+focusStocks=['300576','600839','600157','000717','002607','600127','600605','600217','300727','301421','002843','600968','300159','601688','600919']
+getInfo=getStockInfo(focusStocks)
+Analist=pd.DataFrame({'代码':focusStocks,'名称':getInfo['名称'],'IPO':getInfo['IPO'],'行业':getInfo['行业'],'流通股':getInfo['流通股'],'总股本':getInfo['总股本']})
+Analist['流通股']=Analist['流通股'].astype(int)
+Analist['总股本']=Analist['总股本'].astype(int)
+Analist['流通率']=Analist['流通股']/Analist['总股本']
+Analist
 -------------------
 
